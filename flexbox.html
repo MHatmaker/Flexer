@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+ <script data-require="angular.js@1.0.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js" data-semver="1.0.7"></script>   
+ <script src="script.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <button value="{{Expand}}" ng-click="onExpClick()">{{Expand}}</button>
+    <table  style="width:100%">
+      <tr >
+        <td>
+            <table  style="height:400px;width:100%">
+              <tr style="height:10%;">
+                <td colspan="{{numColsToSpan}}">
+                  <h3  style="border:2px solid green;">{{Header}}</h3>
+                    <div style="border:2px solid blue;">
+                      This should span the complete page
+                      <br>
+                      Some additional text
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="container" style="height:100%;">
+                    <section><span class="big">Row 1</span><span class="small">Some stuff</span></section>
+                    <section><span class="big">Row 2</span><span class="small">Some stuff</span></section>
+                    <section><span class="big">Row 3</span><span class="small">Some stuff</span></section>
+                  </div>
+                </td>
+                <td>
+                  <div class="container">
+                    <h3 style="border:2px solid green; flex:1">
+                      Some Right Column Stuff
+                    </h3>
+                    <div style="border:2px solid blue;  flex:2;">
+                      what is supposed to be here
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+        </td>
+        <td style="display : {{VerbVis}}">
+          <div id="Verbage" class="container" >
+            <h3 style="border:2px solid green; flex:1">
+              The Collapsible Column Stuff
+            </h3>
+            <div style="border:2px solid blue;  flex:2;">
+              This is supposed to collapse
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <h3  style="border:2px solid green;">Footer</h3>
+    </div>
+  </body>
+
+</html>
