@@ -12,32 +12,42 @@
     <table  style="width:100%">
       <tr >
         <td>
-            <table  style="height:400px;width:100%">
+            <table  style="height:400px;max-height: 400px;width:100%">
               <tr style="height:10%;">
                 <td colspan="{{numColsToSpan}}">
                   <h3  style="border:2px solid green;">{{Header}}</h3>
                     <div style="border:2px solid blue;">
                       This should span the complete page
                       <br>
-                      Some additional text
+                      Except fot the plugin, when it is visible, even if it requires another row
                     </div>
                 </td>
               </tr>
               <tr>
-                <td>
-                  <div class="container" style="height:100%;">
+                <td >
+                  <div class="container" style="height:100%;flex:1">
                     <section><span class="big">Row 1</span><span class="small">Some stuff</span></section>
                     <section><span class="big">Row 2</span><span class="small">Some stuff</span></section>
                     <section><span class="big">Row 3</span><span class="small">Some stuff</span></section>
                   </div>
                 </td>
-                <td>
-                  <div class="container">
+                <td >
+                  <div class="container" style="flex:2">
+                    <h4 style="border:2px solid green; flex:1">
+                      Center Stuff
+                    </h4>
+                    <div style="border:2px solid blue;  flex:4;">
+                      Map is supposed to be here
+                    </div>
+                  </div>
+                </td>
+                <td style="flex:1">
+                  <div class="container" style="flex:2">
                     <h3 style="border:2px solid green; flex:1">
                       Some Right Column Stuff
                     </h3>
                     <div style="border:2px solid blue;  flex:2;">
-                      what is supposed to be here
+                      Phony latin should be here
                     </div>
                   </div>
                 </td>
@@ -46,11 +56,36 @@
         </td>
         <td style="display : {{VerbVis}}">
           <div id="Verbage" class="container" >
-            <h3 style="border:2px solid green; flex:1">
-              The Collapsible Column Stuff
+            <h3 style="border:2px solid green;">
+              Mashover Plugin
             </h3>
-            <div style="border:2px solid blue;  flex:2;">
-              This is supposed to collapse
+            <div style="border:2px solid blue; max-height:340px; height:340px;overflow-y: auto;">
+              <ul>
+                <li>first</li>
+                <li>second</li>
+                <li>third</li>
+                <li>fourth</li>
+                <li>fifth</li>
+                <li>sixth</li>
+                <li>seventh</li>
+                <li>eighth</li>
+                <li>aaaa</li>
+                <li>bbbb</li>
+                <li>cccc</li>
+                <li>dddd</li>
+                <li>eeee</li>
+                <li>ffff</li>
+                <li>gggg</li>
+                <li>hhhh</li>
+                <li>iiii</li>
+                <li>jjjj</li>
+                <li>kkkk</li>
+                <li>llll</li>
+                <li>mmmm</li>
+                <li>nnnn</li>
+                <li>oooo</li>
+                <li>pppp</li>
+              </ul>
             </div>
           </div>
         </td>
