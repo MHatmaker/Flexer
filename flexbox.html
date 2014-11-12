@@ -9,10 +9,10 @@
 
   <body ng-controller="MainCtrl">
     <button value="{{Expand}}" ng-click="onExpClick()">{{Expand}}</button>
-    <table  style="width:100%">
+    <table  style="height:{{outerTblHeight}}px;max-height: {{outerTblHeight}}px;width:100%">
       <tr >
         <td>
-            <table  style="height:400px;max-height: 400px;width:100%">
+            <table  style="height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;width:100%">
               <tr style="height:10%;">
                 <td colspan="{{numColsToSpan}}">
                   <h3  style="border:2px solid green;">{{Header}}</h3>
@@ -54,12 +54,12 @@
               </tr>
             </table>
         </td>
-        <td style="display : {{VerbVis}}">
+        <td style="display : {{VerbVis}};height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px">
           <div id="Verbage" class="container" >
             <h3 style="border:2px solid green;">
               Mashover Plugin
             </h3>
-            <div style="border:2px solid blue; max-height:340px; height:340px;overflow-y: auto;">
+            <div style="border:2px solid blue; height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;overflow-y: auto;">
               <ul>
                 <li>first</li>
                 <li>second</li>

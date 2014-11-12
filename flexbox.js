@@ -5,6 +5,8 @@ app.controller('MainCtrl', function($scope) {
   $scope.Expand = "Show Plugin";
   $scope.VerbVis = "none";
   $scope.numColsToSpan = 4;
+  $scope.outerTblHeight = 400;
+  $scope.innerTblHeight =330;
   
   $scope.onExpClick = function(){
       $scope.VerbVis = $scope.Expand == "Show Plugin" ? "inline" : "none";
