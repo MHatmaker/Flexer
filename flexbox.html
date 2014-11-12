@@ -12,6 +12,7 @@
     <table  style="height:{{outerTblHeight}}px;max-height: {{outerTblHeight}}px;width:100%">
       <tr >
         <td>
+          <div class="container">
             <table  style="height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;width:100%">
               <tr style="height:10%;">
                 <td colspan="{{numColsToSpan}}">
@@ -26,13 +27,13 @@
               <tr>
                 <td >
                   <div class="container" style="height:100%;flex:1">
-                    <section><span class="big">Row 1</span><span class="small">Some stuff</span></section>
-                    <section><span class="big">Row 2</span><span class="small">Some stuff</span></section>
-                    <section><span class="big">Row 3</span><span class="small">Some stuff</span></section>
+                    <section><span >Row 1</span><span >Some stuff</span></section>
+                    <section><span >Row 2</span><span >Some stuff</span></section>
+                    <section><span >Row 3</span><span >Some stuff</span></section>
                   </div>
                 </td>
                 <td >
-                  <div class="container" style="flex:2">
+                  <div class="container" style="flex:6;">
                     <h4 style="border:2px solid green; flex:1">
                       Center Stuff
                     </h4>
@@ -41,8 +42,8 @@
                     </div>
                   </div>
                 </td>
-                <td style="flex:1">
-                  <div class="container" style="flex:2">
+                <td >
+                  <div class="container" style="flex:1">
                     <h3 style="border:2px solid green; flex:1">
                       Some Right Column Stuff
                     </h3>
@@ -53,6 +54,7 @@
                 </td>
               </tr>
             </table>
+        </div>
         </td>
         <td style="display : {{VerbVis}};height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px">
           <div id="Verbage" class="container" >
