@@ -37,7 +37,7 @@
               </div>
             </div>
             
-            <div class="container=rightcol" style="flex:1; border: solid purple"">
+            <div class="container=rightcol" style="flex:1; border: solid purple">
               <h3 style="border:2px solid green; flex:1">
                 Some Right Column Stuff
               </h3>
@@ -52,32 +52,11 @@
         <h3 style="border:2px solid green;margin:2px;">
           Mashover Plugin
         </h3>
-            <div style="border:2px solid blue; margin:2px; height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;overflow-y: auto;">
+            <div class="fill-height-or-more" flex=4 style="height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px; border:2px solid blue; margin:2px; overflow-y: auto;">
               <ul>
-                <li>first</li>
-                <li>second</li>
-                <li>third</li>
-                <li>fourth</li>
-                <li>fifth</li>
-                <li>sixth</li>
-                <li>seventh</li>
-                <li>eighth</li>
-                <li>aaaa</li>
-                <li>bbbb</li>
-                <li>cccc</li>
-                <li>dddd</li>
-                <li>eeee</li>
-                <li>ffff</li>
-                <li>gggg</li>
-                <li>hhhh</li>
-                <li>iiii</li>
-                <li>jjjj</li>
-                <li>kkkk</li>
-                <li>llll</li>
-                <li>mmmm</li>
-                <li>nnnn</li>
-                <li>oooo</li>
-                <li>pppp</li>
+                <li ng-repeat = "president in presidents">
+                  {{president}}
+                </li>
               </ul>
              </div>
        </div>
