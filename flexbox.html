@@ -9,58 +9,48 @@
 
   <body ng-controller="MainCtrl">
     <button value="{{Expand}}" ng-click="onExpClick()">{{Expand}}</button>
-    <table  style="height:{{outerTblHeight}}px;max-height: {{outerTblHeight}}px;width:100%">
-      <tr >
-        <td>
-          <div class="container">
-            <table  style="height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;width:100%">
-              <tr style="height:10%;">
-                <td colspan="{{numColsToSpan}}">
-                  <h3  style="border:2px solid green;">{{Header}}</h3>
-                    <div style="border:2px solid blue;">
-                      This should span the complete page
-                      <br>
-                      Except fot the plugin, when it is visible, even if it requires another row
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <td >
-                  <div class="container" style="height:100%;flex:1">
-                    <section><span >Row 1</span><span >Some stuff</span></section>
-                    <section><span >Row 2</span><span >Some stuff</span></section>
-                    <section><span >Row 3</span><span >Some stuff</span></section>
-                  </div>
-                </td>
-                <td >
-                  <div class="container" style="flex:6;">
-                    <h4 style="border:2px solid green; flex:1">
-                      Center Stuff
-                    </h4>
-                    <div style="border:2px solid blue;  flex:4;">
-                      Map is supposed to be here
-                    </div>
-                  </div>
-                </td>
-                <td >
-                  <div class="container" style="flex:1">
-                    <h3 style="border:2px solid green; flex:1">
-                      Some Right Column Stuff
-                    </h3>
-                    <div style="border:2px solid blue;  flex:2;">
-                      Phony latin should be here
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </table>
+    
+    <div class="container-website" style="height:{{outerTblHeight}}px;max-height: {{outerTblHeight}}px;width:100%">
+    
+      <div class="container-primary">
+        <h3  style="border:2px solid green;">{{Header}}</h3>
+        <div style="border:2px solid blue;">
+          This should span the complete page
+          <br>
+          Except fot the plugin, when it is visible, even if it requires another row
         </div>
-        </td>
-        <td style="display : {{VerbVis}};height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px">
-          <div id="Verbage" class="container" >
-            <h3 style="border:2px solid green;">
-              Mashover Plugin
-            </h3>
+        
+        <div class="container-body">
+            <div class="container-leftcol">
+              <section><span >Row 1</span><span >Some stuff</span></section>
+              <section><span >Row 2</span><span >Some stuff</span></section>
+              <section><span >Row 3</span><span >Some stuff</span></section>
+            </div>
+            
+            <div class="container-mapcol">
+              <h4 style="border:2px solid green; flex:1">
+                Center Stuff
+              </h4>
+              <div style="border:2px solid blue;  flex:4;">
+                Map is supposed to be here
+              </div>
+            </div>
+            
+            <div class="container=rightcol" style="flex:1">
+              <h3 style="border:2px solid green; flex:1">
+                Some Right Column Stuff
+              </h3>
+              <div style="border:2px solid blue;  flex:2;">
+                Phony latin should be here
+              </div>
+            </div>
+        </div>
+      </div>
+      
+      <div id="Verbage" class="container-plugin" >
+        <h3 style="border:2px solid green;">
+          Mashover Plugin
+        </h3>
             <div style="border:2px solid blue; height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;overflow-y: auto;">
               <ul>
                 <li>first</li>
@@ -88,11 +78,9 @@
                 <li>oooo</li>
                 <li>pppp</li>
               </ul>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </table>
+             </div>
+       </div>
+    </div>
     <div>
       <h3  style="border:2px solid green;">Footer</h3>
     </div>

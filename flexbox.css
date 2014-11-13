@@ -1,7 +1,56 @@
+
+.container-website {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  height: 400px; /* Or whatever */
+}
+
+.container-primary {
+  display: flex; /* or inline-flex */
+  flex-direction: column;
+  flex: 2;
+}
+
+.container-body {
+  flex: 1;
+
+  display: flex;
+  flex-direction: row;
+}
+.container-leftcol {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-mapcol {
+  flex: 3;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-rightcol {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-plugin {
+  display: flex; /* or inline-flex */
+  flex-direction: column;
+  flex: 1;
+}
+
 .fill-height-or-more > div {
   flex: 1;
 
-  display: flex
+  display: flex;
   justify-content: center;
   flex-direction: column;
 }
