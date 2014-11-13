@@ -55,7 +55,8 @@
 }
 
 .embedded-image {
-  flex : 4;
+  width:100%;
+  height:auto;
 }
 
 .fill-height-or-more > div {
