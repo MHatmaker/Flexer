@@ -23,6 +23,7 @@
         <div class="container-body">
             <div class="container-leftcol">
               <section><span >Row 1</span><span >Some stuff</span></section>
+              <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" flex = 4/>
               <section><span >Row 2</span><span >Some stuff</span></section>
               <section><span >Row 3</span><span >Some stuff</span></section>
             </div>
@@ -32,7 +33,7 @@
                 Center Stuff
               </h4>
               <div style="border:2px solid blue;  flex:4;">
-                Map is supposed to be here
+                <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" flex : 4/>
               </div>
             </div>
             
@@ -47,11 +48,11 @@
         </div>
       </div>
       
-      <div id="Verbage" class="container-plugin" >
-        <h3 style="border:2px solid green;">
+      <div id="Verbage" class="container-plugin" style="display:{{VerbVis}}" >
+        <h3 style="border:2px solid green;margin:2px;">
           Mashover Plugin
         </h3>
-            <div style="border:2px solid blue; height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;overflow-y: auto;">
+            <div style="border:2px solid blue; margin:2px; height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;overflow-y: auto;">
               <ul>
                 <li>first</li>
                 <li>second</li>
