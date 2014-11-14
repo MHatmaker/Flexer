@@ -2,6 +2,7 @@
 .container-website {
   display: flex; /* or inline-flex */
   flex-direction: row;
+  width:100%
  /* height: 400px;*/
 }
 
@@ -10,12 +11,30 @@
   flex-direction: column;
   flex: 1;
   border:4px solid red;
-  margin : 2px;
   padding : 2px;
 }
 
+.container-uppercell {
+  display: flex;
+  flex-direction: column;
+  flex : 1;
+}
+
+.container-uppercellhead {
+  display: flex;
+  flex-direction: column;
+  flex : 1;
+}
+
+.container-uppercellbody {
+  display: flex;
+  flex-direction: column;
+  flex : 3;
+  overflow: auto
+}
+
 .container-body {
-  flex: 6;
+  flex: 5;
 
   display: flex;
   flex-direction: row;
@@ -29,6 +48,7 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  border: solid yellow;
 }
 
 .container-mapcol {
