@@ -14,23 +14,29 @@
   padding : 2px;
 }
 
-.container-uppercell {
+.container-newscell {
   display: flex;
   flex-direction: column;
   flex : 1;
 }
 
-.container-uppercellhead {
+.container-newscellhead {
   display: flex;
   flex-direction: column;
   flex : 1;
+  border:2px solid green;
+  font-size:11pt;
+  font-weight:bold; 
+  text-align: center;
 }
 
-.container-uppercellbody {
+.container-newscellbody {
   display: flex;
   flex-direction: column;
   flex : 3;
-  overflow: auto
+  overflow: auto;
+  border:2px solid blue;
+  font-size:11pt;
 }
 
 .container-body {
@@ -64,8 +70,9 @@
   flex: 1;
 
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   flex-direction: column;
+  border: solid purple;
 }
 
 .container-plugin {
