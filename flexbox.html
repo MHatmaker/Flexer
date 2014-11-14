@@ -12,12 +12,11 @@
     
     <div class="container-website" style="height:{{outerTblHeight}}px;max-height: {{outerTblHeight}}px;width:100%">
     
-      <div class="container-primary">
-        <h3  style="border:2px solid green;">{{Header}}</h3>
+      <div class="container-primary" >
+        <p  style="font-size:11pt;font-weight:bold; text-align: center">{{Header}}</p>
         <div style="border:2px solid blue;">
-          This should span the complete page
-          <br>
-          Except fot the plugin, when it is visible, even if it requires another row
+          <p style="font-size:9pt;">This should span the complete page</p>
+          <p style="font-size:9pt;"> Except fot the plugin, when it is visible, even if it requires another rowe</p>
         </div>
         
         <div class="container-body">
@@ -29,10 +28,12 @@
             </div>
             
             <div class="container-mapcol" style="border: solid orange">
-              <h4 style="border:2px solid green; flex:1">
-                Center Stuff
-              </h4>
-              <div style="border:2px solid blue;  flex:4; overflow:hidden">
+              <div class="container-mapcolheading">
+              <p>
+                Center Column Stuff
+              </p>
+              </div>
+              <div class="container-mapholder" >
                 <img class="embedded-image" src="http://www.schaik.com/png/pngcsum_icon.gif"/>
               </div>
             </div>
