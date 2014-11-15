@@ -2,17 +2,27 @@ body {
   margin:0; /* This is used to reset any browser-default margins */ 
 }
 
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex-direction: column;
+  flex:1;
+}
+
+/*
 .wrapper > * {
   display:flex;
   flex:1;
-  /*fheight:100vh;*/
 }
+*/
 
 .container-website {
   display: flex; /* or inline-flex */
-  flex: 4;
+  flex: 22;
   flex-direction: row;
-  width:100%;
+  /*width:100%;*/
  /* height:100%;*/
  /* height: 400px;*/
 }
@@ -29,13 +39,14 @@ body {
   display: flex;
   flex-direction: column;
   flex : 1;
+  padding:2px;
 }
 
 .container-newscellhead {
   display: flex;
   flex-direction: column;
   flex : 1;
-  border:2px solid green;
+  border:5px solid green;
   font-size:11pt;
   font-weight:bold; 
   text-align: center;
@@ -146,8 +157,9 @@ body {
 }
 
 @media all and (min-width: 800px) {
-  .container-mapcol    { flex: 3 0px; }
+  .container-mapcol    { flex: 4 0px; }
   .container-leftcol { order: 1; } 
   .container-mapcol     { order: 2; }
   .container-rightcol { order: 3; }
+  .container-plugin { order : 4;}
 }
