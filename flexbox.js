@@ -1,10 +1,20 @@
+
+function getDocHeight() {
+    return Math.max(
+        //document.body.scrollHeight, document.documentElement.scrollHeight,
+        0, //document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+    );
+}
+
 var app = angular.module('plunker', []);
 
 var presidentList = [
   'Washington', 'Adams', 'Jefferson', 'Madison','Monroe', 'JQAdams', 'Jackson', 'Van Buren',
   'WHHarrison', 'Tyler', 'Polk', 'Taylor', 'Fillmore', 'Pierce', 'Buchannon', 'Lincoln', 'AJohnson', 'Grant',
   'Hayes', 'Garfield', 'Arthur', 'Cleveland22', 'BHarrison', 'Cleveland24', 'McKinley', 'TRoosevelt', 'Taft',
-  'Wilson', 'Harding', 'Coolidge', 'Hoover', 'FRoosevelt', 'Truman', 'Eisenhower', 'Kennedy', 'LJohnson'];
+  'Wilson', 'Harding', 'Coolidge', 'Hoover', 'FRoosevelt', 'Truman', 'Eisenhower', 'Kennedy', 'LJohnson',
+  'Nixon', 'Ford', 'Carter', 'Reagan', 'GHWBush', 'Clinton', 'GWBush', 'Obama'];
   
 var ulRatio = 0.9;
   
@@ -13,7 +23,9 @@ app.controller('MainCtrl', function($scope) {
   $scope.Header = "Site Exerciser";
   $scope.Expand = "Show Plugin";
   $scope.VerbVis = "none";
-  $scope.outerTblHeight = 400;
+  $scope.wrapperHeight = getDocHeight();
+  //alert($scope.outerTblHeight);
+  $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
   $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   
   $scope.presidents = presidentList;

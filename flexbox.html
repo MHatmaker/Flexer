@@ -7,68 +7,70 @@
  <script src="script.js"></script>
   </head>
 
-  <body ng-controller="MainCtrl">
-    <button value="{{Expand}}" ng-click="onExpClick()">{{Expand}}</button>
-    
-    <div class="container-website" style="height:{{outerTblHeight}}px;max-height: {{outerTblHeight}}px;">
-    
-      <div class="container-primary" >
-        <div class="container-newscell" >
-          <div class="container-newscellhead">
-            {{Header}}
-          </div>        
-          <div class="container-newscellbody" >
-            This should span the complete page
-            <br>
-            Except fot the plugin, when it is visible, even if it requires another row
+  <body ng-controller="MainCtrl" style="height:100vh;">
+    <div class="wrapper" style="{{wrapperHeight}}px;max-height: {{wrapperHeight}}px;">
+      <div class="container-newscellhead">
+        <button value="{{Expand}}" ng-click="onExpClick()">{{Expand}}</button>
+      </div>
+      
+      <div class="container-website" style="{{outerTblHeight}}px;max-height: {{outerTblHeight}}px;" >
+      
+        <div class="container-primary" >
+          <div class="container-newscell" >
+            <div class="container-newscellhead">
+              {{Header}}
+            </div>        
+            <div class="container-newscellbody" >
+              This should span the complete page
+              <br>
+              Except fot the plugin, when it is visible, even if it requires another row
+            </div>
+          </div>
+          
+          <div class="container-body">
+              <div class="aside container-leftcol" >
+                <section style="border: solid DarkSeaGreen"><span >Row 1</span><span >Some stuff</span></section>
+                <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" style="border: solid DarkSeaGreen"/>
+                <section style="border: solid DarkSeaGreen"><span >Row 2</span><span >Some stuff</span></section>
+                <section style="border: solid DarkSeaGreen"><span >Row 3</span><span >Some stuff</span></section>
+              </div>
+              
+              <div class="container-mapcol" style="border: solid orange">
+                <div class="aside container-mapcolheading">
+                  Center Column Stuff
+                </div>
+                <div class="container-mapholder" >
+                  <img class="embedded-image" src="http://www.schaik.com/png/pngcsum_icon.gif"/>
+                </div>
+              </div>
+              
+              <div class="aside container-rightcol">
+                <div class="container-newscellhead" style=" overflow:auto;">
+                  Some Right Column Stuff
+                </div>
+                <div class="container-newscellbody" style="border:2px solid blue;flex: 5; ">
+                  molestie at, fringilla in, sodales eu, elit.Curabitur mattis lorem et est. Quisque et tortor. Integer bibendumvulputate odio. Nam nec ipsum. Vestibulum mollis eros feugiataugue. Integer fermentum odio lobortis odio. Nullam mollis nisl nonmetus. Maecenas nec nunc eget pede ultrices blandit. Ut non purusut elit convallis eleifend. Fusce tincidunt, justo quis tempuseuismod, magna nulla viverra libero, sit amet lacinia odio diam idrisus. 
+                </div>
+              </div>
           </div>
         </div>
         
-        <div class="container-body">
-            <div class="container-leftcol" >
-              <section style="border: solid DarkSeaGreen"><span >Row 1</span><span >Some stuff</span></section>
-              <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" style="border: solid DarkSeaGreen"/>
-              <section style="border: solid DarkSeaGreen"><span >Row 2</span><span >Some stuff</span></section>
-              <section style="border: solid DarkSeaGreen"><span >Row 3</span><span >Some stuff</span></section>
-            </div>
-            
-            <div class="container-mapcol" style="border: solid orange">
-              <div class="container-mapcolheading">
-              <p>
-                Center Column Stuff
-              </p>
-              </div>
-              <div class="container-mapholder" >
-                <img class="embedded-image" src="http://www.schaik.com/png/pngcsum_icon.gif"/>
-              </div>
-            </div>
-            
-            <div class="container-rightcol">
-              <div class="container-newscellhead" style=" overflow:auto;">
-                Some Right Column Stuff
-              </div>
-              <div class="container-newscellbody" style="border:2px solid blue;flex: 5; ">
-                molestie at, fringilla in, sodales eu, elit.Curabitur mattis lorem et est. Quisque et tortor. Integer bibendumvulputate odio. Nam nec ipsum. Vestibulum mollis eros feugiataugue. Integer fermentum odio lobortis odio. Nullam mollis nisl nonmetus. Maecenas nec nunc eget pede ultrices blandit. Ut non purusut elit convallis eleifend. Fusce tincidunt, justo quis tempuseuismod, magna nulla viverra libero, sit amet lacinia odio diam idrisus. 
-              </div>
-            </div>
-        </div>
+        <div id="Verbage" class="container-plugin" style="display:{{VerbVis}}" >
+          <h3 style="border:2px solid green;margin:2px;">
+            Mashover Plugin
+          </h3>
+              <div class="fill-height-or-more" flex=4 style="height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px; border:2px solid blue; margin:2px; overflow-y: auto;">
+                <ul>
+                  <li ng-repeat = "president in presidents">
+                    {{president}}
+                  </li>
+                </ul>
+               </div>
+         </div>
       </div>
-      
-      <div id="Verbage" class="container-plugin" style="display:{{VerbVis}}" >
-        <h3 style="border:2px solid green;margin:2px;">
-          Mashover Plugin
-        </h3>
-            <div class="fill-height-or-more" flex=4 style="height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px; border:2px solid blue; margin:2px; overflow-y: auto;">
-              <ul>
-                <li ng-repeat = "president in presidents">
-                  {{president}}
-                </li>
-              </ul>
-             </div>
-       </div>
-    </div>
-    <div>
-      <h3  style="border:2px solid green;">Footer</h3>
+      <div class="container-newscellhead">
+        Footer
+      </div>
     </div>
   </body>
 
