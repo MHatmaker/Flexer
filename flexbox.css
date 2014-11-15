@@ -152,14 +152,14 @@ body {
   flex-direction: column;
 }
 
-@media all and (min-width: 600px) {
+@media all and (max-width: 600px) {
   .aside { flex: 1 auto; }
 }
 
-@media all and (min-width: 800px) {
-  .container-mapcol    { flex: 4 0px; }
+@media all and (max-width: 800px) {
+  .container-mapcol    { flex: 3 0px; }
   .container-leftcol { order: 1; } 
   .container-mapcol     { order: 2; }
   .container-rightcol { order: 3; }
-  .container-plugin { order : 4;}
+  /*.container-plugin { order : 4;}*/
 }
