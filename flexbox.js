@@ -24,7 +24,7 @@ app.controller('MainCtrl', function($scope) {
   $scope.Expand = "Show Plugin";
   $scope.VerbVis = "none";
   $scope.wrapperHeight = getDocHeight();
-  //alert($scope.outerTblHeight);
+  //alert($scope.wrapperHeight);
   $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
   $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   
@@ -33,6 +33,7 @@ app.controller('MainCtrl', function($scope) {
   $scope.onExpClick = function(){
       $scope.VerbVis = $scope.Expand == "Show Plugin" ? "inline" : "none";
       $scope.Expand = $scope.Expand == "Show Plugin" ? "Hide Plugin" : "Show Plugin";
-      $scope.innerTblHeight = $scope.outerTblHeight * ulRatio;
+      $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
+      $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   };
 });
