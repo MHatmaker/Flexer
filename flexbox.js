@@ -7,6 +7,24 @@ function getDocHeight() {
     );
 }
 
+function checkMedia(){
+  var mq = window.matchMedia('@media all and (min-width: 400px)');
+  if(mq.matches) {
+    alert("more than initial");
+      // the width of browser is more then 700px
+  } else {
+    alert("less than initial");
+      // the width of browser is less then 700px
+  } 
+  mq.addListener(function(changed) {
+    if(changed.matches) {
+        alert("matches");
+    } else {
+        alert("no matche");
+    }
+});
+}
+
 var app = angular.module('plunker', []);
 
 var presidentList = [
@@ -25,6 +43,7 @@ app.controller('MainCtrl', function($scope) {
   $scope.VerbVis = "none";
   $scope.wrapperHeight = getDocHeight();
   //alert($scope.wrapperHeight);
+  //heckMedia();
   $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
   $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   
