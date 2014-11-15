@@ -153,7 +153,12 @@ body {
 }
 
 @media all and (max-width: 600px) {
-  .aside { flex: 1 auto; }
+  .container-body {
+    /*flex: 1 auto; */
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0;
+  }
 }
 
 @media all and (max-width: 800px) {

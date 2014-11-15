@@ -1,73 +1,200 @@
+html,
 body {
-  margin:0; /* This is used to reset any browser-default margins */ 
+  height: 100%;
 }
 
-.wrapper {
+.container {
   display: -webkit-box;
   display: -moz-box;
+  display: -ms-box;
+  display: -o-box;
+  display: box;
   display: -ms-flexbox;
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  height: 100%;
+  border-top: 1px solid #ddd;
+  -webkit-box-orient: vertical;
+     -moz-box-orient: vertical;
+      -ms-box-orient: vertical;
+       -o-box-orient: vertical;
+          box-orient: vertical;
+  -webkit-flex-direction: column;
+     -moz-flex-direction: column;
+      -ms-flex-direction: column;
+       -o-flex-direction: column;
+          flex-direction: column;
+}
+
+section {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: -o-box;
+  display: box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  height: 100%;
+  border-bottom: 1px solid #ddd;
+  -webkit-flex: 1 1 auto;
+     -moz-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+       -o-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+section span {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: -o-box;
+  display: box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-box-align: center;
+     -moz-box-align: center;
+      -ms-box-align: center;
+       -o-box-align: center;
+          box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+     -moz-align-items: center;
+      -ms-align-items: center;
+       -o-align-items: center;
+          align-items: center;
+}
+
+.big {
+  padding: 0 1em;
+  -webkit-flex: 7 1 auto;
+     -moz-flex: 7 1 auto;
+      -ms-flex: 7 1 auto;
+       -o-flex: 7 1 auto;
+          flex: 7 1 auto;
+}
+
+.small {
+  padding: 0 1em;
+  background-color: #eee;
+  -webkit-box-pack: center;
+     -moz-box-pack: center;
+  -webkit-flex: 3 1 auto;
+     -moz-flex: 3 1 auto;
+      -ms-flex: 3 1 auto;
+       -o-flex: 3 1 auto;
+          flex: 3 1 auto;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+     -moz-justify-content: center;
+      -ms-justify-content: center;
+       -o-justify-content: center;
+          justify-content: center;
+}
+
+Simpler alternative
+
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  display: flex;
   flex-direction: column;
-  flex:1;
+  border-top: 1px solid #ddd;
+  height: 100%
 }
 
-/*
-.wrapper > * {
-  display:flex;
-  flex:1;
-}
-*/
-
-.container-website {
-  display: flex; /* or inline-flex */
-  flex: 22;
-  flex-direction: row;
-  /*width:100%;*/
- /* height:100%;*/
- /* height: 400px;*/
-}
-
-.container-primary {
-  display: flex; /* or inline-flex */
-  flex-direction: column;
+section {
   flex: 1;
-  border:4px solid red;
-  padding : 2px;
-}
-
-.container-newscell {
   display: flex;
-  flex-direction: column;
-  flex : 1;
-  padding:2px;
+  
+  border-bottom: 1px solid #ddd;
+  height: 100%;
 }
 
-.container-newscellhead {
+section span {
   display: flex;
-  flex-direction: column;
-  flex : 1;
-  border:5px solid green;
-  font-size:11pt;
-  font-weight:bold; 
-  text-align: center;
+  align-items: center;
 }
 
-.container-newscellbody {
+.big {
+  flex: 7;
+  padding: 0 1em;
+}
+
+.small {
+  flex: 3;
+  padding: 0 1em;
+  justify-content: center;
+  background-color: #eee;
+}
+
+
+Third alternative
+
+http://css-tricks.com/boxes-fill-height-dont-squish/
+
+.fill-height-or-more {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
-  flex : 3;
-  overflow: auto;
-  border:2px solid blue;
-  font-size:11pt;
+} 
+
+.fill-height-or-more > div {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.container-body {
-  flex: 5;
 
-  border:3px dashed OrangeRed;
-  margin : 2px;
-  padding : 2px;
-  flex-flow: row wrap;
+Resizable for mobile, etc.
+
+http://codepen.io/HugoGiraudel/pen/qIAwr
+
+http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+
+.wrapper {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -75,96 +202,124 @@ body {
   display: flex;  
   
   -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  
+  font-weight: bold;
+  text-align: center;
 }
 
-.container-body > * {
-  padding: 3px;
-  /*flex: 1 100%;*/
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
 }
 
-.container-leftcol {
-  flex: 1;
+.header {
+  background: tomato;
+}
 
+.footer {
+  background: lightgreen;
+}
+
+.main {
+  text-align: left;
+  background: deepskyblue;
+}
+
+.aside-1 {
+  background: gold;
+}
+
+.aside-2 {
+  background: hotpink;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 3 0px; }
+  .aside-1 { order: 1; } 
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+
+body {
+  padding: 2em; 
+}
+
+<div class="wrapper">
+  <header class="header">Header</header>
+  <article class="main">
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>  
+  </article>
+  <aside class="aside aside-1">Aside 1</aside>
+  <aside class="aside aside-2">Aside 2</aside>
+  <footer class="footer">Footer</footer>
+</div>
+
+
+Navigation
+
+.navigation {
+  list-style: none;
+  margin: 0; 
+  
+  background: deepskyblue;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  border: solid yellow;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-end;
 }
 
-.container-mapcol {
-  flex: 3;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items : stretch;
-  flex-direction: column;
+.navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  color: white;
 }
 
-.container-rightcol {
-  flex: 1;
-
-  display: flex;
-  /*justify-content: center;*/
-  flex-direction: column;
-  border: solid purple;
+.navigation a:hover {
+  background: darken(deepskyblue, 2%);
 }
 
-.container-plugin {
-  /*
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1;
-  */
-  border:2px solid brown;
-}
-
-.container-mapcolheading {
-  display: flex;
-  flex : 1;
-  border:4px solid green; 
-  font-size:11pt;
-  font-weight:bold;
-  padding: 4;
-  justify-content: center;
-}
-
-.container-mapholder {
-  display: flex;
-  flex : 10;
-  border:4px solid blue;
-  height: auto;
-  overflow: hidden
-}
-
-.embedded-image {
-  display : flex;
-  flex : 4;
-  width:100%;
-  height:auto;
-}
-
-.fill-height-or-more > div {
-  flex: 1;
-
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
 }
 
 @media all and (max-width: 600px) {
-  .container-body {
-    /*flex: 1 auto; */
+  .navigation {
     -webkit-flex-flow: column wrap;
     flex-flow: column wrap;
     padding: 0;
   }
+  
+  .navigation a { 
+    text-align: center; 
+    padding: 10px;
+    border-top: 1px solid rgba(255,255,255,0.3); 
+    border-bottom: 1px solid rgba(0,0,0,0.1); 
+  }
+
+  
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
 }
 
-@media all and (max-width: 800px) {
-  .container-mapcol    { flex: 3 0px; }
-  .container-leftcol { order: 1; } 
-  .container-mapcol     { order: 2; }
-  .container-rightcol { order: 3; }
-  /*.container-plugin { order : 4;}*/
-}
+<ul class="navigation">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">About</a></li>
+  <li><a href="#">Products</a></li>
+  <li><a href="#">Contact</a></li>
+</ul>
+
