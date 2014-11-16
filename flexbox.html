@@ -3,14 +3,28 @@
 
   <head>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navigation.css">
  <script data-require="angular.js@1.0.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js" data-semver="1.0.7"></script>   
  <script src="script.js"></script>
   </head>
 
   <body ng-controller="MainCtrl" style="height:100vh;">
     <div class="wrapper" style="height:{{wrapperHeight}}px;max-height: {{wrapperHeight}}px;">
-      <div class="container-newscellhead">
-        <button value="{{Expand}}" ng-click="onExpClick()">{{Expand}}</button>
+      <div class="navigation">
+        <div class="havButton">
+          {{currentTab.site}}
+        </div>        
+        <div class="havButton">
+          {{currentTab.title}}
+        </div> 
+        <div>
+          <div id="idExpButton" class="havButton" ng-click="onExpClick()" style="justify-content: center;align-self: flex-start;">
+            <span>
+              {{Expand}}
+              <img src="{{currentTab.imgSrc}}" style="flex: 0.5; align-self: flex-start; height: {{expBtnHeight}}px; padding: 0.01em;" />
+            </span>
+          </div>
+        </div>
       </div>
       
       <div class="container-website" >

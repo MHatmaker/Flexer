@@ -35,6 +35,22 @@ var presidentList = [
   'Nixon', 'Ford', 'Carter', 'Reagan', 'GHWBush', 'Clinton', 'GWBush', 'Obama'];
   
 var ulRatio = 0.9;
+
+var currentSelectedTab = {
+  'site' : 'google',
+  'imgSrc' : 'http://www.schaik.com/pingpong/pingpong_button.gif',
+  'title' : 'google maps'
+};
+
+function getButtonHeight(){
+  var expBtn = document.getElementById("idExpButton");
+  //alert(expBtn);
+  var expBtnA = angular.element(expBtn);
+  //alert(expBtnA);
+  var btnHeight = expBtn.clientHeight;
+  //alert(btnHeight);
+  return btnHeight * 0.8;
+}
   
 
 app.controller('MainCtrl', function($scope) {
@@ -48,6 +64,9 @@ app.controller('MainCtrl', function($scope) {
   $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   
   $scope.presidents = presidentList;
+  $scope.currentTab = currentSelectedTab;
+  $scope.expBtnHeight = getButtonHeight();
+  //alert($scope.expBtnHeight)
   
   $scope.onExpClick = function(){
       $scope.VerbVis = $scope.Expand == "Show Plugin" ? "inline" : "none";
