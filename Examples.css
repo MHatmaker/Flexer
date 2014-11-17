@@ -323,3 +323,14 @@ Navigation
   <li><a href="#">Contact</a></li>
 </ul>
 
+    display: -webkit-box;
+    -webkit-box-align: center;
+
+    display: -moz-box;
+    -moz-box-align: center;
+
+    display: -ms-flexbox;
+    -ms-flex-align: center;
+
+    display: box;
+    box-align: center
