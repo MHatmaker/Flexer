@@ -11,13 +11,15 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  flex-flow: row wrap;
   
   -webkit-flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .navigation .havButton {
   text-decoration: none;
+  text-aligh: center;
   display: block;
   padding: 0.5em;
   color: white;

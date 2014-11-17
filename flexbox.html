@@ -17,13 +17,15 @@
         <div class="havButton">
           {{currentTab.title}}
         </div> 
-        <div>
-          <div id="idExpButton" class="havButton" ng-click="onExpClick()" style="justify-content: center;align-self: flex-start;">
+          <div id="idExpButton" class="havButton" ng-click="onExpClick()" style="padding: 0.01em; float:right; text-align: center;">
             <span>
-              {{Expand}}
-              <img src="{{currentTab.imgSrc}}" style="flex: 0.5; align-self: flex-start; height: {{expBtnHeight}}px; padding: 0.01em;" />
+              <figure style="position: relative; flex: 0 0 20%; left: 4%; right: auto;">
+                <figcaption style="float: left;top: 4%;  text-align: left;">
+                {{Expand}}
+                </figcaption>
+                <img src="{{currentTab.imgSrc}}" style="float: right;width:  {{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em;" />
+              </figure>
             </span>
-          </div>
         </div>
       </div>
       
