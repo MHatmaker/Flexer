@@ -1,4 +1,6 @@
 
+* { box-sizing: border-box; }
+
 /* Large */
 .navigation {
   list-style: none;
@@ -19,7 +21,7 @@
 
 .navigation .havButton {
   text-decoration: none;
-  text-aligh: center;
+  text-align: center;
   display: block;
   padding: 0.5em;
   color: white;

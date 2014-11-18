@@ -37,10 +37,29 @@ var presidentList = [
 var ulRatio = 0.9;
 
 var currentSelectedTab = {
-  'site' : 'google',
+  'site' : 'Web site featuring a google map',
   'imgSrc' : 'http://www.schaik.com/pingpong/pingpong_button.gif',
   'title' : 'google maps'
 };
+
+var posView = "-87.713, 41.891";
+var viewOpts = [ 
+  { 
+    type : 'zoom level',
+    key : 'zm',
+    value : 'zm, scale'
+  },
+  { 
+    type : 'map center',
+    key : 'cntr',
+    value : 'cntrlng, cntrlat'
+  },
+  { 
+    type : 'mouse coords',
+    key : 'coords',
+    value : 'evlng, evlat'
+  }
+  ];
 
 function getButtonHeight(){
   var expBtn = document.getElementById("idExpButton");
@@ -49,7 +68,7 @@ function getButtonHeight(){
   //alert(expBtnA);
   var btnHeight = expBtn.clientHeight;
   //alert(btnHeight);
-  return btnHeight * 0.8;
+  return btnHeight * 0.6;
 }
   
 
@@ -59,12 +78,16 @@ app.controller('MainCtrl', function($scope) {
   $scope.VerbVis = "none";
   $scope.wrapperHeight = getDocHeight();
   //alert($scope.wrapperHeight);
-  //heckMedia();
+  //checkMedia();
   $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
   $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   
   $scope.presidents = presidentList;
   $scope.currentTab = currentSelectedTab;
+  $scope.positionView = posView;
+  $scope.viewOptions = viewOpts;
+  $scope.currentViewOption = $scope.viewOptions[2];
+  
   $scope.expBtnHeight = getButtonHeight();
   //alert($scope.expBtnHeight)
   

@@ -13,20 +13,26 @@
       <div class="navigation">
         <div class="havButton">
           {{currentTab.site}}
-        </div>        
+        </div>       
+        <div  class="havButton">
+          <input id = 'mppos' type='text' name='cursPos' disabled ng-model="positionView" style='font-size:9pt;text-align:right;margin-right:10px;padding: 0px 5px 0px 5px;width:100%'>
+        </div>
+        <div class="havButton">
+         <select ng-model="currentViewOption"  ng-options="option.type for option in viewOptions"></select>
+        </div > 
         <div class="havButton">
           {{currentTab.title}}
-        </div> 
-          <div id="idExpButton" class="havButton" ng-click="onExpClick()" style="padding: 0.01em; float:right; text-align: center;">
-            <span>
-              <figure style="position: relative; flex: 0 0 20%; left: 4%; right: auto;">
-                <figcaption style="float: left;top: 4%;  text-align: left;">
-                {{Expand}}
-                </figcaption>
-                <img src="{{currentTab.imgSrc}}" style="float: right;width:  {{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em;" />
-              </figure>
-            </span>
-        </div>
+        </div > 
+        <div id="idExpButton" class="havButton" ng-click="onExpClick()" style="padding: 0.01em 0.01em 0.01em 0.01em;">
+          <span>
+            <figure>
+              <figcaption style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.01em;">
+              {{Expand}}
+              </figcaption>
+              <img src="{{currentTab.imgSrc}}" style="float: right; width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.4em;" />
+            </figure>
+          </span>
+      </div>
       </div>
       
       <div class="container-website" >
