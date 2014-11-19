@@ -75,7 +75,9 @@ function getButtonHeight(){
 app.controller('MainCtrl', function($scope) {
   $scope.Header = "Site Exerciser";
   $scope.Expand = "Show Plugin";
+  $scope.ExpandSum = "Hide Summary";
   $scope.VerbVis = "none";
+  $scope.MasterSiteVis = "inline";
   $scope.wrapperHeight = getDocHeight();
   //alert($scope.wrapperHeight);
   //checkMedia();
@@ -90,6 +92,13 @@ app.controller('MainCtrl', function($scope) {
   
   $scope.expBtnHeight = getButtonHeight();
   //alert($scope.expBtnHeight)
+  
+  $scope.onExpSumClick = function(){
+      $scope.MasterSiteVis = $scope.ExpandSum == "Show Summary" ? "inline" : "none";
+      $scope.ExpandSum = $scope.ExpandSum == "Show Summary" ? "Hide Summary" : "Show Summary";
+      // $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
+      // $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
+  };
   
   $scope.onExpClick = function(){
       $scope.VerbVis = $scope.Expand == "Show Plugin" ? "inline" : "none";
