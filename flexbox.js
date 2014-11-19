@@ -78,7 +78,7 @@ app.controller('MainCtrl', function($scope) {
   $scope.ExpandSum = "Hide Summary";
   $scope.VerbVis = "none";
   $scope.MasterSiteVis = "inline";
-  $scope.wrapperHeight = getDocHeight();
+  $scope.wrapperHeight = window.innerHeight; //getDocHeight();
   //alert($scope.wrapperHeight);
   //checkMedia();
   $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
@@ -96,8 +96,8 @@ app.controller('MainCtrl', function($scope) {
   $scope.onExpSumClick = function(){
       $scope.MasterSiteVis = $scope.ExpandSum == "Show Summary" ? "inline" : "none";
       $scope.ExpandSum = $scope.ExpandSum == "Show Summary" ? "Hide Summary" : "Show Summary";
-      // $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
-      // $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
+       $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
+       $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   };
   
   $scope.onExpClick = function(){
