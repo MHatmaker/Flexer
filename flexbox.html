@@ -11,11 +11,12 @@
   <body ng-controller="MainCtrl" style="height:100vh;">
     <div class="container-mastersite">
       <div class="mastersite-expander">
-          <div id="idExpButtonSum" class="havButton" ng-click="onExpSumClick()" style="padding: 0.01em 0.01em 0.01em 0.01em;">
+          <div id="idExpButtonSum" class="havButton" ng-click="onExpSumClick()" >
             <span>
-              <figure>
-                <img src="{{currentTab.imgSrc}}" style="float: left; width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.4em;" />
-                <figcaption style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.01em;">
+              <figure style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;">
+                <img src="{{currentTab.imgSrc}}" 
+                  style="flex:1;float: left; width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.4em;" />
+                <figcaption style="flex:15;float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;">
                 {{ExpandSum}}
                 </figcaption>
               </figure>
@@ -50,11 +51,11 @@
           </div > 
           <div id="idExpButton" class="havButton" ng-click="onExpClick()" style="padding: 0.01em 0.01em 0.01em 0.01em;">
             <span>
-              <figure>
+              <figure style="margin-top: 4px; margin-bottom: 4px; margin-right: 4px;">
                 <figcaption style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.01em;">
                 {{Expand}}
                 </figcaption>
-                <img src="{{currentTab.imgSrc}}" style="float: right; width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.4em;" />
+                <img src="{{currentTab.imgSrc}}" style="width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.4em;" />
               </figure>
             </span>
           </div>
