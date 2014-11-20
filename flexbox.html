@@ -37,23 +37,30 @@
       
       <div class="wrapper" style="height:{{wrapperHeight}}px;max-height: {{wrapperHeight}}px;">
         <div class="navigation" >
-          <div class="havButton" style="flex:1.2">
+          <div class="havButton" style="flex:1.2;font-size:10pt;">
             {{currentTab.site}}
           </div>       
           <div  class="havButton">
-            <input id = 'mppos' type='text' name='cursPos' disabled ng-model="positionView" style='font-size:9pt;text-align:right;margin-right:10px;padding: 0px 5px 0px 5px;width:100%'>
+            <input id = 'mppos' type='text' name='cursPos' disabled ng-model="positionView" style='flex:0.6;font-size:9pt;text-align:right;margin-right:5px;padding: 0px 2px 0px 2px;'>
           </div>
           <div class="havButton">
            <select ng-model="currentViewOption"  ng-options="option.type for option in viewOptions"></select>
           </div > 
-          <div class="havButton">
-            {{currentTab.title}}
-          </div > 
-          <div id="idExpButton" class="havButton" ng-click="onExpClick()" style="flex:1;padding: 0.01em 0.01em 0.01em 0.01em;">
+          <div id="idExpPlugButton" class="havButton" ng-click="onExpPlugClick()" style="flex:1;padding: 0.01em 0.01em 0.01em 0.01em;">
             <span>
               <figure style="margin-top: 4px; margin-bottom: 4px; margin-right: 4px;">
                 <figcaption style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.01em;">
-                {{Expand}}
+                {{ExpandPlug}}
+                </figcaption>
+                <img src="{{currentTab.imgSrc}}" style="width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.01em;margin-left:1em" />
+              </figure>
+            </span>
+          </div>
+          <div id="idExpSiteButton" class="havButton" ng-click="onExpSiteClick()" style="flex:1;padding: 0.01em 0.01em 0.01em 0.01em;">
+            <span>
+              <figure style="margin-top: 4px; margin-bottom: 4px; margin-right: 4px;">
+                <figcaption style="float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.01em;">
+                {{ExpandSite}}
                 </figcaption>
                 <img src="{{currentTab.imgSrc}}" style="width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.01em;margin-left:1em" />
               </figure>
@@ -63,8 +70,8 @@
         
         <div class="container-website" >
         
-          <div class="container-primary" >
-            <div class="container-newscell" >
+          <div class="container-primary" style="flex:4;" >
+            <div class="container-newscell" style="display:{{SiteVis}}" >
               <div class="container-newscellhead">
                 {{Header}}
               </div>        
@@ -76,7 +83,7 @@
             </div>
             
             <div class="container-body">
-                <div class="container-leftcol" >
+                <div class="container-leftcol" style="display:{{SiteVis}}">
                   <section style="border: solid DarkSeaGreen"><span >Row 1</span><span >Some stuff</span></section>
                   <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" style="border: solid DarkSeaGreen"/>
                   <section style="border: solid DarkSeaGreen"><span >Row 2</span><span >Some stuff</span></section>
@@ -92,7 +99,7 @@
                   </div>
                 </div>
                 
-                <div class="container-rightcol">
+                <div class="container-rightcol" style="display:{{SiteVis}}">
                   <div class="container-newscellhead" style=" overflow:auto; flex:2;">
                     Some Right Column Stuff
                   </div>

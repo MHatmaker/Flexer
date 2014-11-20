@@ -37,7 +37,7 @@ var presidentList = [
 var ulRatio = 0.9;
 
 var currentSelectedTab = {
-  'site' : 'Web site featuring a google map',
+  'site' : 'Site hosting a google map',
   'imgSrc' : 'http://www.schaik.com/pingpong/pingpong_button.gif',
   'title' : 'google maps'
 };
@@ -62,7 +62,7 @@ var viewOpts = [
   ];
 
 function getButtonHeight(){
-  var expBtn = document.getElementById("idExpButton");
+  var expBtn = document.getElementById("idExpPlugButton");
   //alert(expBtn);
   var expBtnA = angular.element(expBtn);
   //alert(expBtnA);
@@ -74,11 +74,14 @@ function getButtonHeight(){
 
 app.controller('MainCtrl', function($scope) {
   $scope.Header = "Site Exerciser";
-  $scope.Expand = "Show Plugin";
+  $scope.ExpandPlug = "Show Plugin";
   $scope.ExpandSum = "Hide Summary";
+  $scope.ExpandSite = "Hide WebSite";
   $scope.VerbVis = "none";
   $scope.MasterSiteVis = "inline";
-  $scope.wrapperHeight = window.innerHeight; //getDocHeight();
+  $scope.SiteVis = "inline";
+  $scope.wrapperHeight = getDocHeight();
+  $scope.wrapperHeight = // window.innerHeight;
   //alert($scope.wrapperHeight);
   //checkMedia();
   $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
@@ -100,10 +103,14 @@ app.controller('MainCtrl', function($scope) {
        $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   };
   
-  $scope.onExpClick = function(){
-      $scope.VerbVis = $scope.Expand == "Show Plugin" ? "inline" : "none";
-      $scope.Expand = $scope.Expand == "Show Plugin" ? "Hide Plugin" : "Show Plugin";
+  $scope.onExpPlugClick = function(){
+      $scope.VerbVis = $scope.ExpandPlug == "Show Plugin" ? "inline" : "none";
+      $scope.ExpandPlug = $scope.ExpandPlug == "Show Plugin" ? "Hide Plugin" : "Show Plugin";
       $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
       $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
+  };
+  $scope.onExpSiteClick = function(){
+      $scope.SiteVis = $scope.ExpandSite == "Show WebSite" ? "inline" : "none";
+      $scope.ExpandSite = $scope.ExpandSite == "Show WebSite" ? "Hide WebSite" : "Show WebSite";
   };
 });
