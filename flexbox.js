@@ -71,6 +71,15 @@ function getButtonHeight(){
   return btnHeight * 0.6;
 }
   
+function getElemHeight(itm){
+  var elem = document.getElementById(itm);
+  //alert(expBtn);
+  var elemA = angular.element(elem);
+  //alert(expBtnA);
+  var elemHeight = elem.clientHeight;
+  //alert(btnHeight);
+  return elemHeight;
+}
 
 app.controller('MainCtrl', function($scope) {
   $scope.Header = "Site Exerciser";
@@ -96,11 +105,33 @@ app.controller('MainCtrl', function($scope) {
   $scope.expBtnHeight = getButtonHeight();
   //alert($scope.expBtnHeight)
   
+  var hgtComponents = {
+    "masterSiteHgt" : null,
+    "masterSiteExpanderHgt": null,
+    "masterSiteSumHgt" : null,
+    "navigatoHgt" : null,
+    "topSiteRowHgt" : null,
+    "footerHgt" : null,
+  };
+  
+  function getComponentHeights(){
+    hgtComponents["masterSiteHgt"] = getElemHeight("idMasterSite");
+    hgtComponents["masterSiteExpanderHgt"] = getElemHeight("idMasterSiteExpander");
+    hgtComponents["masterSiteSumHgt"] = getElemHeight("idMasterSiteSummary");
+    hgtComponents["navigatorHgt"] = getElemHeight("idNavigator"); 
+    hgtComponents["topSiteRowHgt"] = getElemHeight("idSiteTopRow");
+    hgtComponents["footerHgt"] = getElemHeight("idFooter"); 
+  }
+  
+  
   $scope.onExpSumClick = function(){
       $scope.MasterSiteVis = $scope.ExpandSum == "Show Summary" ? "inline" : "none";
       $scope.ExpandSum = $scope.ExpandSum == "Show Summary" ? "Hide Summary" : "Show Summary";
+      var masterSiteSumHgt = getElemHeight("idMasterSiteSummary");
        $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
        $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
+       var topSiteRowHgt = getElemHeight("idSiteTopRow");
+       $scope.leftColHeight =  $scope.innerTblHeight - topSiteRowHgt;
   };
   
   $scope.onExpPlugClick = function(){

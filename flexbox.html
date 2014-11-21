@@ -9,8 +9,8 @@
   </head>
 
   <body ng-controller="MainCtrl" style="height:100vh;">
-    <div class="container-mastersite">
-      <div class="mastersite-expander">
+    <div id="idMasterSite" class="container-mastersite">
+      <div id="idMasterSiteExpander" class="mastersite-expander">
           <div id="idExpButtonSum" class="havButton" ng-click="onExpSumClick()" >
             <span>
               <figure style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;">
@@ -23,7 +23,7 @@
             </span>
           </div>
       </div>
-      <div class="mastersite-summary" style="display:{{MasterSiteVis}}">
+      <div id="idMasterSiteSummary" class="mastersite-summary" style="display:{{MasterSiteVis}}">
         <div class="container-newscellhead" style=" overflow:auto; flex:2;">
           Summary of Master Web Site Capabilities
         </div>
@@ -36,7 +36,7 @@
       </div>
       
       <div class="wrapper" style="height:{{wrapperHeight}}px;max-height: {{wrapperHeight}}px;">
-        <div class="navigation" >
+        <div id="idNavigator" class="navigation" >
           <div class="havButton" style="flex:1.2;font-size:10pt;">
             {{currentTab.site}}
           </div>       
@@ -71,7 +71,7 @@
         <div class="container-website" >
         
           <div class="container-primary" style="flex:4;" >
-            <div class="container-newscell" style="display:{{SiteVis}}" >
+            <div id="idSiteTopRow" class="container-newscell" style="display:{{SiteVis}}" >
               <div class="container-newscellhead">
                 {{Header}}
               </div>        
@@ -99,13 +99,15 @@
                   </div>
                 </div>
                 
-                <div class="container-rightcol" style="display:{{SiteVis}}">
-                  <div class="container-newscellhead" style=" overflow:auto; flex:2;">
-                    Some Right Column Stuff
-                  </div>
-                  <div class="container-newscellbody" style="border:2px solid blue;flex: 5; ">
-                    molestie at, fringilla in, sodales eu, elit.Curabitur mattis lorem et est. Quisque et tortor. Integer bibendumvulputate odio. Nam nec ipsum. Vestibulum mollis eros feugiataugue. Integer fermentum odio lobortis odio. Nullam mollis nisl nonmetus. Maecenas nec nunc eget pede ultrices blandit. Ut non purusut elit convallis eleifend. Fusce tincidunt, justo quis tempuseuismod, magna nulla viverra libero, sit amet lacinia odio diam idrisus. 
-                  </div>
+                <div class="container-rightcol" style="display:{{SiteVis}};height:{{leftColHeight}}px;max-height: {{leftColHeight}}px; overflow-y:auto;">
+                  <div class="container-newscell">
+                    <div class="container-newscellhead" style="overflow:auto; flex:2;">
+                      Some Right Column Stuff
+                    </div>
+                    <div class="container-newscellbody" style="border:2px solid blue;flex: 5;overflow-y:hidden;">
+                      molestie at, fringilla in, sodales eu, elit.Curabitur mattis lorem et est. Quisque et tortor. Integer bibendumvulputate odio. Nam nec ipsum. Vestibulum mollis eros feugiataugue. Integer fermentum odio lobortis odio. Nullam mollis nisl nonmetus. Maecenas nec nunc eget pede ultrices blandit. Ut non purusut elit convallis eleifend. Fusce tincidunt, justo quis tempuseuismod, magna nulla viverra libero, sit amet lacinia odio diam idrisus. 
+                    </div>
+                 </div>
                 </div>
             </div>
           </div>
@@ -123,7 +125,7 @@
                  </div>
            </div>
         </div>
-        <div class="container-newscellhead">
+        <div id="idFooter" class="container-newscellhead">
           Footer
         </div>
       </div>
