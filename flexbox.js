@@ -81,6 +81,15 @@ function getElemHeight(itm){
   return elemHeight;
 }
 
+  var hgtComponents = {
+    "masterSiteHgt" : null,
+    "masterSiteExpanderHgt": null,
+    "masterSiteSumHgt" : null,
+    "navigatoHgt" : null,
+    "topSiteRowHgt" : null,
+    "footerHgt" : null,
+  };
+  
 app.controller('MainCtrl', function($scope) {
   $scope.Header = "Site Exerciser";
   $scope.ExpandPlug = "Show Plugin";
@@ -89,12 +98,17 @@ app.controller('MainCtrl', function($scope) {
   $scope.VerbVis = "none";
   $scope.MasterSiteVis = "inline";
   $scope.SiteVis = "inline";
-  $scope.wrapperHeight = getDocHeight();
-  $scope.wrapperHeight = // window.innerHeight;
+  //$scope.wrapperHeight = getDocHeight();
+  //$scope.wrapperHeight = // window.innerHeight;
   //alert($scope.wrapperHeight);
   //checkMedia();
-  $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
-  $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
+  //$scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
+  //$scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
+  
+      getComponentHeights();
+      var colHgt = getSiteColumnHeights();
+      $scope.innerTblHeight =colHgt + hgtComponents["topSiteRowHgt"];
+      $scope.leftColHeight = colHgt;
   
   $scope.presidents = presidentList;
   $scope.currentTab = currentSelectedTab;
@@ -105,14 +119,6 @@ app.controller('MainCtrl', function($scope) {
   $scope.expBtnHeight = getButtonHeight();
   //alert($scope.expBtnHeight)
   
-  var hgtComponents = {
-    "masterSiteHgt" : null,
-    "masterSiteExpanderHgt": null,
-    "masterSiteSumHgt" : null,
-    "navigatoHgt" : null,
-    "topSiteRowHgt" : null,
-    "footerHgt" : null,
-  };
   
   function getComponentHeights(){
     hgtComponents["masterSiteHgt"] = getElemHeight("idMasterSite");
@@ -123,25 +129,35 @@ app.controller('MainCtrl', function($scope) {
     hgtComponents["footerHgt"] = getElemHeight("idFooter"); 
   }
   
+  function getSiteColumnHeights(){
+    var colHgt = hgtComponents["masterSiteHgt"] -  hgtComponents["masterSiteExpanderHgt"]
+      - hgtComponents["masterSiteSumHgt"] - hgtComponents["navigatorHgt"] - hgtComponents["topSiteRowHgt"] - hgtComponents["footerHgt"];
+    return colHgt;
+  }
   
   $scope.onExpSumClick = function(){
       $scope.MasterSiteVis = $scope.ExpandSum == "Show Summary" ? "inline" : "none";
       $scope.ExpandSum = $scope.ExpandSum == "Show Summary" ? "Hide Summary" : "Show Summary";
-      var masterSiteSumHgt = getElemHeight("idMasterSiteSummary");
-       $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
-       $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
-       var topSiteRowHgt = getElemHeight("idSiteTopRow");
-       $scope.leftColHeight =  $scope.innerTblHeight - topSiteRowHgt;
+      getComponentHeights();
+      var colHgt = getSiteColumnHeights();
+      $scope.innerTblHeight =colHgt + hgtComponents["topSiteRowHgt"];
+      $scope.leftColHeight = colHgt;
   };
   
   $scope.onExpPlugClick = function(){
       $scope.VerbVis = $scope.ExpandPlug == "Show Plugin" ? "inline" : "none";
       $scope.ExpandPlug = $scope.ExpandPlug == "Show Plugin" ? "Hide Plugin" : "Show Plugin";
-      $scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
-      $scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
+      getComponentHeights();
+      var colHgt = getSiteColumnHeights();
+      $scope.innerTblHeight =colHgt + hgtComponents["topSiteRowHgt"];
+      $scope.leftColHeight = colHgt;
   };
   $scope.onExpSiteClick = function(){
       $scope.SiteVis = $scope.ExpandSite == "Show WebSite" ? "inline" : "none";
       $scope.ExpandSite = $scope.ExpandSite == "Show WebSite" ? "Hide WebSite" : "Show WebSite";
+      getComponentHeights();
+      var colHgt = getSiteColumnHeights();
+      $scope.innerTblHeight =colHgt + hgtComponents["topSiteRowHgt"];
+      $scope.leftColHeight = colHgt;
   };
 });
