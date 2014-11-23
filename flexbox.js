@@ -5,7 +5,6 @@ function getDocHeight() {
         0, //document.body.offsetHeight, document.documentElement.offsetHeight,
         document.body.clientHeight, document.documentElement.clientHeight
     );
-    // return window.innerHeight;
 }
 
 function checkMedia(){
@@ -100,7 +99,7 @@ app.controller('MainCtrl', function($scope) {
   $scope.MasterSiteVis = "inline";
   $scope.SiteVis = "inline";
   //$scope.wrapperHeight = getDocHeight();
-  $scope.wrapperHeight = getDocHeight();
+  // $scope.wrapperHeight = getDocHeight();
   //alert($scope.wrapperHeight);
   //checkMedia();
   //$scope.outerTblHeight = $scope.wrapperHeight * ulRatio;

@@ -70,7 +70,7 @@
         
         <div class="container-website" >
         
-          <div class="container-primary" style="flex:4;" >
+          <div class="container-primary" >
             <div id="idSiteTopRow" class="container-newscell" style="display:{{SiteVis}}" >
               <div class="container-newscellhead">
                 {{Header}}
@@ -82,7 +82,7 @@
               </div>
             </div>
             
-            <div class="container-body">
+            <div class="container-body" id="idContainerBody"  style="flex:4;height:{{wrapperHeight}}px;max-height: {{wrapperHeight}}px;">
                 <div class="container-leftcol" style="display:{{SiteVis}};height:{{leftColHeight}}px;max-height: {{leftColHeight}}px; overflow-y:auto;">
                   <section style="border: solid DarkSeaGreen"><span >Row 1</span><span >Some stuff</span></section>
                   <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" style="border: solid DarkSeaGreen"/>
@@ -125,8 +125,8 @@
                  </div>
            </div>
         </div>
-        <div class="container-newscell" style="display:{{SiteVis}};">
-          <div id="idFooter" class="container-newscellhead">
+        <div class="container-newscell" id="idFooter" style="display:{{SiteVis}};">
+          <div class="container-newscellhead">
           Footer
           </div>
         </div>
