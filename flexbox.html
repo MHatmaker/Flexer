@@ -35,7 +35,7 @@
         </div>
       </div>
       
-      <div class="wrapper" style="height:{{wrapperHeight}}px;max-height: {{wrapperHeight}}px;">
+      <div class="wrapper" >
         <div id="idNavigator" class="navigation" >
           <div class="havButton" style="flex:1.2;font-size:10pt;">
             {{currentTab.site}}
@@ -83,14 +83,14 @@
             </div>
             
             <div class="container-body">
-                <div class="container-leftcol" style="display:{{SiteVis}}">
+                <div class="container-leftcol" style="display:{{SiteVis}};height:{{leftColHeight}}px;max-height: {{leftColHeight}}px; overflow-y:auto;">
                   <section style="border: solid DarkSeaGreen"><span >Row 1</span><span >Some stuff</span></section>
                   <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" style="border: solid DarkSeaGreen"/>
                   <section style="border: solid DarkSeaGreen"><span >Row 2</span><span >Some stuff</span></section>
                   <section style="border: solid DarkSeaGreen"><span >Row 3</span><span >Some stuff</span></section>
                 </div>
                 
-                <div class="container-mapcol" style="border: solid orange">
+                <div class="container-mapcol" style="border: solid orange;height:{{leftColHeight}}px;max-height: {{leftColHeight}}px; ">
                   <div class="container-mapcolheading">
                     Center Column Stuff
                   </div>
@@ -125,8 +125,10 @@
                  </div>
            </div>
         </div>
-        <div id="idFooter" class="container-newscellhead">
+        <div class="container-newscell" style="display:{{SiteVis}};">
+          <div id="idFooter" class="container-newscellhead">
           Footer
+          </div>
         </div>
       </div>
     </div>
