@@ -8,7 +8,7 @@
  <script src="script.js"></script>
   </head>
 
-  <body ng-controller="MainCtrl" style="height:100vh;">
+  <body ng-controller="MainCtrl" style="height:100vh;" id="idAppBody" >
     <div id="idMasterSite" class="container-mastersite">
       <div id="idMasterSiteExpander" class="mastersite-expander">
           <div id="idExpButtonSum" class="havButton" ng-click="onExpSumClick()" >
@@ -81,17 +81,17 @@
                 Except fot the plugin, when it is visible, even if it requires another row
               </div>
             </div>
-
+            
             <div style="flex:1">
               <div class="container-body" id="idContainerBody"  style="height:{{wrapperHeight}}px;max-height: {{wrapperHeight}}px;">
-                  <div class="container-leftcol" style="display:{{SiteVis}}; overflow-y:auto;">
+                  <div class="container-leftcol" style="display:{{SiteVis}};height:{{leftColHeight}}px;max-height: {{leftColHeight}}px; overflow-y:auto;">
                     <section style="border: solid DarkSeaGreen"><span >Row 1</span><span >Some stuff</span></section>
                     <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" style="border: solid DarkSeaGreen"/>
                     <section style="border: solid DarkSeaGreen"><span >Row 2</span><span >Some stuff</span></section>
                     <section style="border: solid DarkSeaGreen"><span >Row 3</span><span >Some stuff</span></section>
                   </div>
                   
-                  <div class="container-mapcol" style="border: solid orange;">
+                  <div class="container-mapcol" style="border: solid orange;height:{{leftColHeight}}px;max-height: {{leftColHeight}}px;">
                     <div class="container-mapcolheading">
                       Center Column Stuff
                     </div>
@@ -100,12 +100,12 @@
                     </div>
                   </div>
                   
-                  <div class="container-rightcol" style="display:{{SiteVis}};">
+                  <div class="container-rightcol" style="overflow-y:auto;display:{{SiteVis}};height:{{leftColHeight}}px;max-height: {{leftColHeight}}px;">
                     <div class="container-newscell">
                       <div class="container-newscellhead" style="overflow:auto; flex:2;">
                         Some Right Column Stuff
                       </div>
-                      <div class="container-newscellbody" style="border:2px solid blue;flex: 5;overflow-y:hidden;">
+                      <div class="container-newscellbody" style="border:2px solid blue;flex: 5;overflow-y:auto;">
                         molestie at, fringilla in, sodales eu, elit.Curabitur mattis lorem et est. Quisque et tortor. Integer bibendumvulputate odio. Nam nec ipsum. Vestibulum mollis eros feugiataugue. Integer fermentum odio lobortis odio. Nullam mollis nisl nonmetus. Maecenas nec nunc eget pede ultrices blandit. Ut non purusut elit convallis eleifend. Fusce tincidunt, justo quis tempuseuismod, magna nulla viverra libero, sit amet lacinia odio diam idrisus. 
                       </div>
                    </div>
@@ -114,11 +114,11 @@
             </div>
           </div>
           
-          <div id="Verbage" class="container-plugin" style="display:{{VerbVis}}" >
+          <div id="Verbage" class="container-plugin" style="display:{{VerbVis}};height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;" >
             <h3 style="border:2px solid green;margin:2px;">
               Mashover Plugin
             </h3>
-                <div class="fill-height-or-more" flex=4 style="height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px; border:2px solid blue; margin:2px; overflow-y: auto;">
+                <div class="fill-height-or-more" flex=4 style="border:2px solid blue; margin:2px; overflow-y: auto;">
                   <ul>
                     <li ng-repeat = "president in presidents">
                       {{president}}
