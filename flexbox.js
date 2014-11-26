@@ -16,7 +16,7 @@ function getDocHeight() {
   //var appBody = document.getElementById('idAppBody');
   //return appBody.clientHeight - 100;
   
-  return window.innerHeight - 10;
+  return window.innerHeight - 30;
 }    
 
 function checkMedia(){
@@ -124,7 +124,7 @@ app.controller('MainCtrl', function($scope) {
   showHeights(prevTotalHgt, totalHgt);
   prevTotalHgt = totalHgt;
   var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
-  $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"];
+  $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"] + hgtComponents["idFooter"];
   $scope.leftColHeight = colHgt;
   $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents["idFooter"];
   $scope.childSiteHeight = getDocHeight() - totalHgt  + getElemHeight("idNavigator") + 
@@ -219,21 +219,21 @@ app.controller('MainCtrl', function($scope) {
       showHeights(prevTotalHgt, totalHgt);
       prevTotalHgt = totalHgt;
       var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
-      $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"];
+      $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"] + hgtComponents["idFooter"];
       $scope.leftColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents["idFooter"];
       $scope.childSiteHeight = getDocHeight() - totalHgt;
   };
   
   $scope.onExpPlugClick = function(){
-      $scope.VerbVis = $scope.ExpandPlug == "Show Plugin" ? "inline" : "none";
+      $scope.VerbVis = $scope.ExpandPlug == "Show Plugin" ? "flex" : "none";
       $scope.ExpandPlug = $scope.ExpandPlug == "Show Plugin" ? "Hide Plugin" : "Show Plugin";
       placeFooter();
       var totalHgt = getComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
       showHeights(prevTotalHgt, totalHgt);
       prevTotalHgt = totalHgt;
       var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
-      $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"];
+      $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"] + hgtComponents["idFooter"];
       $scope.leftColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents["idFooter"];
       $scope.childSiteHeight = getDocHeight() - totalHgt;
@@ -246,7 +246,7 @@ app.controller('MainCtrl', function($scope) {
       showHeights(prevTotalHgt, totalHgt);
       prevTotalHgt = totalHgt;
       var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
-      $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"];
+      $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"] + hgtComponents["idFooter"];
       $scope.leftColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents["idFooter"];
       $scope.childSiteHeight = getDocHeight() - totalHgt;

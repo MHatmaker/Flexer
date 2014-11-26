@@ -105,7 +105,7 @@
                   
                   <div class="container-rightcol" style="overflow-y:auto;display:{{SiteVis}};height:{{leftColHeight}}px;max-height: {{leftColHeight}}px;">
                     <div class="container-newscell">
-                      <div class="container-newscellhead" style="overflow:auto; flex:2;">
+                      <div class="container-newscellhead" style="overflow:auto; flex:1;">
                         Some Right Column Stuff
                       </div>
                       <div class="container-newscellbody" style="border:2px solid blue;flex: 5;overflow-y:auto;">
@@ -124,16 +124,16 @@
           </div>
           
           <div id="Verbage" class="container-plugin" style="display:{{VerbVis}};height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;" >
-            <h3 style="border:2px solid green;margin:2px;">
+            <div class="container-newscellhead" style="border:2px solid green;margin:2px; overflow:auto;">
               Mashover Plugin
-            </h3>
-                <div class="fill-height-or-more" flex=4 style="border:2px solid blue; margin:2px; overflow-y: auto;">
-                  <ul>
-                    <li ng-repeat = "president in presidents">
-                      {{president}}
-                    </li>
-                  </ul>
-                 </div>
+            </div>
+              <div style="flex:9;border:2px solid blue; margin:2px; overflow-y: auto;">
+                <ul>
+                  <li ng-repeat = "president in presidents">
+                    {{president}}
+                  </li>
+                </ul>
+             </div>
            </div>
         </div>
       </div>

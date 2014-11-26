@@ -109,9 +109,11 @@ body {
   flex-flow: row wrap;
   
   -webkit-flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
+  -webkit-box-align: start;
+     -moz-box-align: start; /* FF <=20 */
+     -ms-flex-align: start; /* IE10 */
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
 }
 
 .container-body > * {
