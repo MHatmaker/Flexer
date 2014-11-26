@@ -16,7 +16,7 @@ function getDocHeight() {
   //var appBody = document.getElementById('idAppBody');
   //return appBody.clientHeight - 100;
   
-  return window.innerHeight - 200;
+  return window.innerHeight - 10;
 }    
 
 function checkMedia(){
@@ -107,7 +107,7 @@ var prevTotalHgt = 0;
 function showHeights(prev, now){
     var prevStr = "Previous total height : " + prev;
     var nowStr = " New total height : " + now;
-    //alert(prevStr + nowStr);
+    alert(prevStr + nowStr);
 }
   
 app.controller('MainCtrl', function($scope) {
@@ -118,21 +118,19 @@ app.controller('MainCtrl', function($scope) {
   $scope.VerbVis = "none";
   $scope.MasterSiteVis = "inline";
   $scope.SiteVis = "inline";
-  //$scope.wrapperHeight = getDocHeight();
-  // $scope.wrapperHeight = getDocHeight();
-  //alert($scope.wrapperHeight);
-  //checkMedia();
-  //$scope.outerTblHeight = $scope.wrapperHeight * ulRatio;
-  //$scope.innerTblHeight = $scope.outerTblHeight *ulRatio;
   
   placeFooter();
-  var totalHgt = getComponentHeights('inline', $scope.SiteVis);
+  var totalHgt = getComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
   showHeights(prevTotalHgt, totalHgt);
   prevTotalHgt = totalHgt;
   var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
   $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"];
   $scope.leftColHeight = colHgt;
   $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents["idFooter"];
+  $scope.childSiteHeight = getDocHeight() - totalHgt  + getElemHeight("idNavigator") + 
+    getElemHeight("idSiteTopRow") + getElemHeight("idFooter");
+  //alert(getDocHeight());
+  //alert($scope.childSiteHeight);
   
   $scope.presidents = presidentList;
   $scope.currentTab = currentSelectedTab;
@@ -168,13 +166,15 @@ app.controller('MainCtrl', function($scope) {
   }
   
   function getAvailableSiteColumnHeights(sumVis, siteVis){
+    var totalHgt = 0;
     var colHgt = 0;
     if(sumVis != "inline"){
       if(siteVis != 'inline'){
-        colHgt = getDocHeight() -  getElemHeight("idMasterSiteExpander");
+        colHgt = getDocHeight() -  getElemHeight("idMasterSiteExpander") - getElemHeight("idNavigator");
       }
       else{
-        colHgt = getDocHeight() -  getElemHeight("idMasterSiteExpander") - getElemHeight["idFooter"];
+        colHgt = getDocHeight() -  getElemHeight("idMasterSiteExpander") - getElemHeight["idFooter"] -
+            getElemHeight("idSiteTopRow") - getElemHeight("idNavigator");
       }
     }
     else{
@@ -188,21 +188,27 @@ app.controller('MainCtrl', function($scope) {
       hgtComponents["idFooter"] =  hgt = getElemHeight("idFooter") + 10;  totalHgt += hgt;
       if(siteVis != 'inline'){
         colHgt = getDocHeight() -  hgtComponents["idMasterSiteExpander"]
-          - hgtComponents["idMasterSiteSummary"] - hgtComponents["idNavigator"] - hgtComponents["idSiteTopRow"] - hgtComponents["idFooter"];
+          - hgtComponents["idMasterSiteSummary"] - hgtComponents["idNavigator"];
       }
       else{
         colHgt = getDocHeight() -  hgtComponents["idMasterSiteExpander"]
-          - hgtComponents["idMasterSiteSummary"] - hgtComponents["idNavigator"] - hgtComponents["idSiteTopRow"];
+          - hgtComponents["idMasterSiteSummary"] - hgtComponents["idNavigator"] - hgtComponents["idSiteTopRow"] - hgtComponents["idFooter"];
       }
     }
     return colHgt;
   }
   
   function placeFooter(){
+    /*
     var ftr = document.getElementById('idFooter');
     var ftrA = angular.element(ftr);
     var ftrHeight = getElemHeight("idFooter");
+    var hgtStuff = '' + getDocHeight();
+    hgtStuff += ' ' + ftrHeight;
+    alert(hgtStuff);
     ftr.style.top = '' + (getDocHeight() - ftrHeight) + 'px';
+    alert(ftr.style.top);
+    */
   }
   
   $scope.onExpSumClick = function(){
@@ -216,6 +222,7 @@ app.controller('MainCtrl', function($scope) {
       $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"];
       $scope.leftColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents["idFooter"];
+      $scope.childSiteHeight = getDocHeight() - totalHgt;
   };
   
   $scope.onExpPlugClick = function(){
@@ -225,10 +232,11 @@ app.controller('MainCtrl', function($scope) {
       var totalHgt = getComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
       showHeights(prevTotalHgt, totalHgt);
       prevTotalHgt = totalHgt;
-      var colHgt = geAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
+      var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
       $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"];
       $scope.leftColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents["idFooter"];
+      $scope.childSiteHeight = getDocHeight() - totalHgt;
   };
   $scope.onExpSiteClick = function(){
       $scope.SiteVis = $scope.ExpandSite == "Show WebSite" ? "inline" : "none";
@@ -241,5 +249,6 @@ app.controller('MainCtrl', function($scope) {
       $scope.innerTblHeight = colHgt + hgtComponents["idSiteTopRow"];
       $scope.leftColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents["idFooter"];
+      $scope.childSiteHeight = getDocHeight() - totalHgt;
   };
 });
