@@ -110,6 +110,13 @@ function showHeights(prev, now){
     var nowStr = " New total height : " + now;
     //alert(prevStr + nowStr);
 }
+
+function showRelativeHeights(totTot, tot, elem){
+    var totTotStr = "grand total height : " + totTot;
+    var totStr = " total height : " + tot;
+    var elemStr = " element height : " + elem;
+    //alert(totTotStr + totStr + elemStr);
+}
   
 app.controller('MainCtrl', function($scope) {
   $scope.Header = "Site Exerciser";
@@ -161,18 +168,22 @@ app.controller('MainCtrl', function($scope) {
     var totalHgt = 0;
     if(sumVis != "inline"){  // sumVis == "none"
       if(siteVis != 'flex'){ // siteVis == "none"
-        totalHgt = hgtComponents.idMasterSiteExpander + hgtComponents.idNavigator
+        totalHgt = hgtComponents.idMasterSiteExpander + hgtComponents.idNavigator;
+        showRelativeHeights(totalHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
       else{
-        totalHgt = hgtComponents.idMasterSiteExpander + idNavigator + hgtComponents.idFooter
+        totalHgt = hgtComponents.totalHgt - hgtComponents.idMasterSiteSummary;
+        showRelativeHeights(totalHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
     }
     else{ // sumVis == "inline"
       if(siteVis == 'flex'){
         totalHgt = hgtComponents.totalHgt;
+        showRelativeHeights(totalHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
       else{
         totalHgt = hgtComponents.totalHgt - hgtComponents.idSiteTopRow - hgtComponents.idFooter;
+        showRelativeHeights(totalHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
     }
     return totalHgt;
@@ -185,23 +196,26 @@ app.controller('MainCtrl', function($scope) {
       if(siteVis != 'flex'){
         var colHgtAA = getDocHeight() - hgtComponents.idMasterSiteExpander - hgtComponents.idNavigator;
         colHgt = colHgtAA;
+        showRelativeHeights(colHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
       else{
-        var colghtA = getDocHeight() - hgtComponents.idMasterSiteExpander - hgtComponents.idMasterSiteSummary - 
-          hgtComponents.idNavigator - hgtComponents.idFooter;
-        colHgt = colghtA;
+        var colHgtA = getDocHeight() - hgtComponents.idMasterSiteExpander - hgtComponents.idMasterSiteSummary - 
+          hgtComponents.idFooter;
+        colHgt = colHgtA;
+        showRelativeHeights(colHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
     }
     else{ // sumVis == "inline"
       if(siteVis != 'flex'){
         var colHgtBB = getDocHeight() -  hgtComponents.idMasterSiteExpander
           - hgtComponents.idMasterSiteSummary - hgtComponents.idNavigator;
-        colHgt = colghtBB;
+        colHgt = colHgtBB;
+        showRelativeHeights(colHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
       else{ // siteVis == "flex"
-        var colghtB = getDocHeight() - hgtComponents.idMasterSiteExpander - hgtComponents.idMasterSiteSummary - 
-          hgtComponents.idNavigator - hgtComponents.idSiteTopRow - hgtComponents.idFooter;
-        colHgt = colghtB
+        var colHgtB = getDocHeight() - hgtComponents.totalHgt;
+        colHgt = colHgtB
+        showRelativeHeights(colHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
     }
     return colHgt;
@@ -232,7 +246,7 @@ app.controller('MainCtrl', function($scope) {
       $scope.innerTblHeight = colHgt + hgtComponents.idSiteTopRow + hgtComponents.idFooter;
       $scope.leftColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
-      $scope.childSiteHeight = getDocHeight() - totalHgt;
+      $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
   };
   
   $scope.onExpPlugClick = function(){
@@ -247,7 +261,7 @@ app.controller('MainCtrl', function($scope) {
       $scope.innerTblHeight = colHgt + hgtComponents.idSiteTopRow + hgtComponents.idFooter;
       $scope.leftColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
-      $scope.childSiteHeight = getDocHeight() - totalHgt;
+      $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
   };
   $scope.onExpSiteClick = function(){
       $scope.SiteVis = $scope.ExpandSite == "Show WebSite" ? "flex" : "none";
