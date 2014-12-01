@@ -151,7 +151,7 @@ app.controller('MainCtrl', function($scope, $window) {
   var w = angular.element($window);
   
   w.bind('resize', function () {
-    calculateComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
+     $scope.$apply(windowResized);
   });
     
   function windowResized(){
