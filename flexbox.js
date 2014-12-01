@@ -118,7 +118,7 @@ function showRelativeHeights(totTot, tot, elem){
     //alert(totTotStr + totStr + elemStr);
 }
   
-app.controller('MainCtrl', function($scope) {
+app.controller('MainCtrl', function($scope, $window) {
   $scope.Header = "Site Exerciser";
   $scope.ExpandPlug = "Show Plugin";
   $scope.ExpandSum = "Hide Summary";
@@ -148,7 +148,23 @@ app.controller('MainCtrl', function($scope) {
   $scope.currentViewOption = $scope.viewOptions[2];
   
   $scope.expBtnHeight = getButtonHeight();
-  //alert($scope.expBtnHeight);
+  var w = angular.element($window);
+  
+  w.bind('resize', function () {
+    calculateComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
+  });
+    
+  function windowResized(){
+    calculateComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
+    var totalHgt = getComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
+    showHeights(prevTotalHgt, totalHgt);
+    prevTotalHgt = totalHgt;
+    var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
+    $scope.innerTblHeight = colHgt + hgtComponents.idSiteTopRow + hgtComponents.idFooter;
+    $scope.leftColHeight = colHgt;
+    $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
+    $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
+  }
   
   function calculateComponentHeights(sumvis, sitevis){
     var totalHgt = 0;
@@ -161,6 +177,7 @@ app.controller('MainCtrl', function($scope) {
     hgtComponents.idSiteTopRow =  hgt = getElemHeight("idSiteTopRow"); totalHgt += hgt;
     hgtComponents.idFooter =  hgt = getElemHeight("idFooter");  totalHgt += hgt;
     hgtComponents.totalHgt = totalHgt;
+    console.log(masterSiteHgt);
   }
   
   
