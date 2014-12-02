@@ -96,34 +96,26 @@ body {
 }
 
 .container-body {
-
-  border:3px dashed OrangeRed;
-  margin : 2px;
-  padding : 2px;
-  
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
-  display: flex;
-  flex-flow: row wrap;
+  display: flex;  
   
   -webkit-flex-flow: row wrap;
-  -webkit-box-align: start;
-     -moz-box-align: start; /* FF <=20 */
-     -ms-flex-align: start; /* IE10 */
-  -webkit-align-items: flex-start;
-          align-items: flex-start;
+  flex-flow: row wrap;
+  border:3px dashed OrangeRed;
+  margin : 2px;
+  padding : 2px;
+  
 }
 
 .container-body > * {
   padding: 3px;
-  /*flex: 1 100%;*/
+  flex: 1 100%;
 }
 
 .container-leftcol {
-  flex: 1;
-
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -131,8 +123,6 @@ body {
 }
 
 .container-mapcol {
-  flex: 3;
-
   display: flex;
   justify-content: flex-start;
   align-items : stretch;
@@ -140,12 +130,23 @@ body {
 }
 
 .container-rightcol {
-  flex: 1;
-
   display: flex;
   /*justify-content: center;*/
   flex-direction: column;
   border: solid purple;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+  .aside { flex: 1;}
+  .container-mapcol    { flex: 3 0px; }
+  .container-leftcol { order: 1; } 
+  .container-mapcol     { order: 2; }
+  .container-rightcol { order: 3; }
+  /*.container-plugin { order : 4;}*/
 }
 
 .container-plugin {
@@ -173,7 +174,7 @@ body {
   flex : 10;
   border:4px solid blue;
   height: auto;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .embedded-image {
@@ -184,19 +185,3 @@ body {
 }
 
 
-@media all and (max-width: 600px) {
-  .container-body {
-    /*flex: 1 auto; */
-    -webkit-flex-flow: column wrap;
-    flex-flow: column wrap;
-    padding: 0;
-  }
-}
-
-@media all and (max-width: 800px) {
-  .container-mapcol    { flex: 3 0px; }
-  .container-leftcol { order: 1; } 
-  .container-mapcol     { order: 2; }
-  .container-rightcol { order: 3; }
-  /*.container-plugin { order : 4;}*/
-}
