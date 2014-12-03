@@ -165,9 +165,10 @@ app.controller('MainCtrl', function($scope, $window) {
      $scope.$apply(windowResized);
   });
     
-  window.matchMedia("(min-width: 600px)").addListener(hitMQ);
+  window.matchMedia("(min-width: 800px)").addListener(hitMQ);
   
   function hitMQ(evt) {
+    /*
     var w = getDocWidth();
     
     var bodyCon = angular.element(document.getElementById("idContainerBody"));
@@ -181,6 +182,7 @@ app.controller('MainCtrl', function($scope, $window) {
       bodyCon.css({'flex-direction' : 'row', 'flex-flow': 'row wrap'}); 
       body.css({'flex-direction' : 'row', 'flex-flow': 'row wrap'}); 
     }
+    */
   }
   
   function windowResized(){

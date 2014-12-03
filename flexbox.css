@@ -131,9 +131,13 @@ body {
   border: solid purple;
 }
 
-@media all and (min-width: 600px) {
+@media all and (max-width: 800px) {
   .aside { flex: 1; }
   .container-body {flex-direction: column;}
+}
+
+@media all and (max-width: 800px) {
+  .aside { flex: 1; }
   .bodyMap {flex-direction: column;}
 }
 
@@ -210,3 +214,4 @@ body {
 }
 
 
+    
