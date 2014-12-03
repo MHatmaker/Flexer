@@ -146,6 +146,7 @@ app.controller('MainCtrl', function($scope, $window) {
   $scope.childSiteHeight = getDocHeight() - totalHgt  + getElemHeight("idNavigator") + 
     getElemHeight("idSiteTopRow") + getElemHeight("idFooter");
   $scope.mapColWidth = $scope.ExpandSite == "Show WebSite" ? "100%" : "inherit";
+    hitMQ(null);
   //alert(getDocHeight());
   //alert($scope.childSiteHeight);
   
@@ -172,7 +173,7 @@ app.controller('MainCtrl', function($scope, $window) {
     var bodyCon = angular.element(document.getElementById("idContainerBody"));
     var body = angular.element(document.getElementById("idBody"));
     console.log("width is " + w);
-    if(w < 600){
+    if(w < 800){
       bodyCon.css({'flex-direction' : 'column', 'flex-flow': ''}); 
       body.css({'flex-direction' : 'column', 'flex-flow': ''}); 
     }
@@ -191,7 +192,7 @@ app.controller('MainCtrl', function($scope, $window) {
     $scope.innerTblHeight = colHgt + hgtComponents.idSiteTopRow + hgtComponents.idFooter;
     $scope.bodyColHeight = colHgt;
     $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
-    $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
+    $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt
     hitMQ(null);
   }
   
@@ -207,7 +208,6 @@ app.controller('MainCtrl', function($scope, $window) {
     hgtComponents.idFooter =  hgt = getElemHeight("idFooter");  totalHgt += hgt;
     hgtComponents.totalHgt = totalHgt;
     console.log(masterSiteHgt);
-    hitMQ(null);
   }
   
   
@@ -280,6 +280,7 @@ app.controller('MainCtrl', function($scope, $window) {
       $scope.bodyColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
       $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
+      hitMQ(null);
   };
   
   $scope.onExpPlugClick = function(){
@@ -299,6 +300,7 @@ app.controller('MainCtrl', function($scope, $window) {
       $scope.bodyColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
       $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
+      hitMQ(null);
   };
   $scope.onExpSiteClick = function(){
       $scope.SiteVis = $scope.ExpandSite == "Show WebSite" ? "flex" : "none";
@@ -318,5 +320,6 @@ app.controller('MainCtrl', function($scope, $window) {
       $scope.bodyColHeight = colHgt;
       $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
       $scope.childSiteHeight = getDocHeight() - totalHgt;
+      hitMQ(null);
   };
 });
