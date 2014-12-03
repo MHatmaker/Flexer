@@ -19,6 +19,12 @@ function getDocHeight() {
   return window.innerHeight - 30;
 }    
 
+function getDocWidth(){
+  return window.innerWidth;
+}
+
+var mq = null;
+
 function checkMedia(){
   var mq = window.matchMedia('@media all and (min-width: 400px)');
   if(mq.matches) {
@@ -35,6 +41,7 @@ function checkMedia(){
         alert("no matche");
     }
 });
+return mq;
 }
 
 var app = angular.module('plunker', []);
@@ -149,12 +156,32 @@ app.controller('MainCtrl', function($scope, $window) {
   $scope.currentViewOption = $scope.viewOptions[2];
   
   $scope.expBtnHeight = getButtonHeight();
+  
+  //mq = checkMedia();
   var w = angular.element($window);
   
   w.bind('resize', function () {
      $scope.$apply(windowResized);
   });
     
+  window.matchMedia("(min-width: 600px)").addListener(hitMQ);
+  
+  function hitMQ(evt) {
+    var w = getDocWidth();
+    
+    var bodyCon = angular.element(document.getElementById("idContainerBody"));
+    var body = angular.element(document.getElementById("idBody"));
+    console.log("width is " + w);
+    if(w < 600){
+      bodyCon.css({'flex-direction' : 'column', 'flex-flow': ''}); 
+      body.css({'flex-direction' : 'column', 'flex-flow': ''}); 
+    }
+    else{
+      bodyCon.css({'flex-direction' : 'row', 'flex-flow': 'row wrap'}); 
+      body.css({'flex-direction' : 'row', 'flex-flow': 'row wrap'}); 
+    }
+  }
+  
   function windowResized(){
     calculateComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
     var totalHgt = getComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
@@ -165,6 +192,7 @@ app.controller('MainCtrl', function($scope, $window) {
     $scope.bodyColHeight = colHgt;
     $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
     $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
+    hitMQ(null);
   }
   
   function calculateComponentHeights(sumvis, sitevis){
@@ -179,6 +207,7 @@ app.controller('MainCtrl', function($scope, $window) {
     hgtComponents.idFooter =  hgt = getElemHeight("idFooter");  totalHgt += hgt;
     hgtComponents.totalHgt = totalHgt;
     console.log(masterSiteHgt);
+    hitMQ(null);
   }
   
   
