@@ -5,44 +5,9 @@ function getDocHeight() {
 
   var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
-  /*
-  return height;
-  return window.innerHeight;
-  */
-  //var masterSiteHgt = getElemHeight('idMasterSite');
-  //return masterSiteHgt;
-    
- // var appBody = getElemHeight('idAppBody'); //document.getElementsByClassName("idAppBody");
-  //var appBody = document.getElementById('idAppBody');
-  //return appBody.clientHeight - 100;
   
   return window.innerHeight - 30;
 }    
-
-function getDocWidth(){
-  return window.innerWidth;
-}
-
-var mq = null;
-
-function checkMedia(){
-  var mq = window.matchMedia('@media all and (min-width: 400px)');
-  if(mq.matches) {
-    alert("more than initial");
-      // the width of browser is more then 700px
-  } else {
-    alert("less than initial");
-      // the width of browser is less then 700px
-  } 
-  mq.addListener(function(changed) {
-    if(changed.matches) {
-        alert("matches");
-    } else {
-        alert("no matche");
-    }
-});
-return mq;
-}
 
 var app = angular.module('plunker', []);
 
@@ -129,11 +94,99 @@ app.controller('MainCtrl', function($scope, $window) {
   $scope.Header = "Site Exerciser";
   $scope.ExpandPlug = "Show Plugin";
   $scope.ExpandSum = "Hide Summary";
+  $scope.ExpandNav = "Hide Navigator";
   $scope.ExpandSite = "Hide WebSite";
   $scope.VerbVis = "none";
   $scope.MasterSiteVis = "inline";
+  $scope.NavigatorVis = "flex";
   $scope.SiteVis = "flex";
   
+  var status = {
+    'mastersite' : true,
+    'navigator' : true,
+    'website' : true,
+    'plugin' : false
+    };
+    
+  function printStatus(msg){ 
+    var msgstr = String.format("{0}... mastersite ? : {1}, navigator ? : {2}, website ? : {3}, plugin ? : {4}", 
+             msg, status['mastersite'], status['navigator'], status['website'], status['plugin']);
+    console.log(msgstr)
+    // msgstr = String.format("verbage {0}, website {1}", verbageWidth[status['plugin']], websiteVisibility[status['website']]);
+    // console.log(msgstr)
+  }
+ 
+  function onShowMasterWebSite(e, from, to, msg){ 
+    status['mastersite'] = true;
+    printStatus('Show Master Web Site!');
+  }
+    
+  function onHideMasterWebSite(e, from, to, msg){ 
+    status['mastersite'] = false;
+    printStatus('Hide Master Web Site!');
+  }
+
+  function onShowNavigator(e, from, to, msg){ 
+    status['navigator'] = true;
+    printStatus('Show Navigator!');
+  }
+ 
+  function onHideNavigator(e, from, to, msg){ 
+    status['navigator'] = false;
+    printStatus('Hide Navigator!');
+  }
+  
+  function onShowPlugin(e, from, to, msg){ 
+    status['plugin'] = true;
+    printStatus('Show Plug-in!');
+  }
+ 
+  function onHidePlugin(e, from, to, msg){ 
+    status['plugin'] = false;
+    printStatus('Hide Plug-in!');
+  }
+    
+  function onShowWebSite(e, from, to, msg){ 
+    status['website'] = true;
+    printStatus('Show Web Site!');
+  }
+    
+  function onHideWebSite(e, from, to, msg){ 
+    status['website'] = false;
+    printStatus('Hide Web Site!');
+  }
+
+  var fsminstance = StateMachine.create({
+    'initial': 'FullWebSite',
+    'events': [
+    {'name': 'showmastersite',  'from': 'NoMasterSiteWNavigator',  'to': 'MasterSiteWNavigator'},
+    {'name': 'showmastersite',  'from': 'NoMasterSiteNoNavigator',  'to': 'MasterSiteNoNavigator'},
+    {'name': 'hidemastersite',  'from': 'MasterSiteWNavigator',  'to': 'NoMasterSiteWNavigator'},
+    {'name': 'hidemastersite',  'from': 'MasterSiteNoNavigator',  'to': 'NoMasterSiteNoNavigator'},
+    {'name': 'shownavigator',  'from': 'MasterSiteNoNavigator',  'to': 'MasterSiteWNavigator'},
+    {'name': 'shownavigator',  'from': 'MasterSiteNoNavigator',  'to': 'MasterSiteWNavigator'},
+    {'name': 'hidenavigator',  'from': 'MasterSiteWNavigator',  'to': 'MasterSiteNoNavigator'},
+    {'name': 'hidenavigator',  'from': 'NoMasterSiteWNavigator',  'to': 'NoMasterSiteNoNavigator'},
+    {'name': 'showplugin',  'from': 'FullWebSite',  'to': 'FullWebSiteWPlugin'},
+    {'name': 'showplugin',  'from': 'NoWebSite',  'to': 'NoWebSiteWPlugin'},
+    {'name': 'hideplugin', 'from': 'FullWebSiteWPlugin', 'to': 'FullWebSite'},
+    {'name': 'hideplugin', 'from': 'NoWebSiteWPlugin', 'to': 'NoWebSite'},
+    {'name': 'showwebsite',  'from': 'NoWebSite',  'to': 'FullWebSite'},
+    {'name': 'hidewebsite',  'from': 'FullWebSiteWPlugin',  'to': 'NoWebSiteWPlugin'},
+    {'name': 'showwebsite', 'from': 'NoWebSiteWPlugin', 'to': 'FullWebSiteWPlugin'},
+    {'name': 'hidewebsite', 'from': 'FullWebSite', 'to': 'NoWebSite'}
+    ],
+    'callbacks': {
+    'showmastersite': onShowMasterWebSite,
+    'hidemastersite': onHideMasterWebSite,
+    'shownavigator': onShowNavigator,
+    'hidenavigator': onHideNavigator,
+    'onshowplugin':  onShowPlugin,
+    'onhideplugin':  onHidePlugin,
+    'onshowwebsite': onShowWebSite,
+    'onhidewebsite': onHideWebSite
+    }
+})
   
   calculateComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
   var totalHgt = getComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
@@ -146,9 +199,6 @@ app.controller('MainCtrl', function($scope, $window) {
   $scope.childSiteHeight = getDocHeight() - totalHgt  + getElemHeight("idNavigator") + 
     getElemHeight("idSiteTopRow") + getElemHeight("idFooter");
   $scope.mapColWidth = $scope.ExpandSite == "Show WebSite" ? "100%" : "inherit";
-    hitMQ(null);
-  //alert(getDocHeight());
-  //alert($scope.childSiteHeight);
   
   $scope.presidents = presidentList;
   $scope.currentTab = currentSelectedTab;
@@ -158,32 +208,11 @@ app.controller('MainCtrl', function($scope, $window) {
   
   $scope.expBtnHeight = getButtonHeight();
   
-  //mq = checkMedia();
   var w = angular.element($window);
   
   w.bind('resize', function () {
      $scope.$apply(windowResized);
   });
-    
-  window.matchMedia("(min-width: 800px)").addListener(hitMQ);
-  
-  function hitMQ(evt) {
-    /*
-    var w = getDocWidth();
-    
-    var bodyCon = angular.element(document.getElementById("idContainerBody"));
-    var body = angular.element(document.getElementById("idBody"));
-    console.log("width is " + w);
-    if(w < 800){
-      bodyCon.css({'flex-direction' : 'column', 'flex-flow': ''}); 
-      body.css({'flex-direction' : 'column', 'flex-flow': ''}); 
-    }
-    else{
-      bodyCon.css({'flex-direction' : 'row', 'flex-flow': 'row wrap'}); 
-      body.css({'flex-direction' : 'row', 'flex-flow': 'row wrap'}); 
-    }
-    */
-  }
   
   function windowResized(){
     calculateComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
@@ -193,9 +222,8 @@ app.controller('MainCtrl', function($scope, $window) {
     var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
     $scope.innerTblHeight = colHgt + hgtComponents.idSiteTopRow + hgtComponents.idFooter;
     $scope.bodyColHeight = colHgt;
-    $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
-    $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt
-    hitMQ(null);
+    $scope.wrapperHeight = getDocHeight() - totalHgt;
+    $scope.childSiteHeight = colHgt;
   }
   
   function calculateComponentHeights(sumvis, sitevis){
@@ -235,6 +263,10 @@ app.controller('MainCtrl', function($scope, $window) {
         showRelativeHeights(totalHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
     }
+    if($scope.NavigatorVis == "none"){
+        totalHgt -= hgtComponents.idNavigator;
+    }
+    
     return totalHgt;
   }
   
@@ -267,6 +299,9 @@ app.controller('MainCtrl', function($scope, $window) {
         showRelativeHeights(colHgt, getDocHeight(), hgtComponents.idMasterSiteSummary);
       }
     }
+    if($scope.NavigatorVis == "none"){
+        colHgt += hgtComponents.idNavigator;
+    }
     return colHgt;
   }
     
@@ -280,9 +315,22 @@ app.controller('MainCtrl', function($scope, $window) {
       var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
       $scope.innerTblHeight = colHgt + hgtComponents.idSiteTopRow + hgtComponents.idFooter;
       $scope.bodyColHeight = colHgt;
-      $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
-      $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
-      hitMQ(null);
+      $scope.wrapperHeight = getDocHeight() - totalHgt;
+      $scope.childSiteHeight = colHgt;
+  };
+  
+  $scope.onExpNavClick = function(){
+      $scope.NavigatorVis = $scope.ExpandNav == "Show Navigator" ? "flex" : "none";
+      $scope.ExpandNav = $scope.ExpandNav == "Show Navigator" ? "Hide Navigator" : "Show Navigator";
+      
+      var totalHgt = getComponentHeights($scope.MasterSiteVis, $scope.SiteVis);
+      showHeights(prevTotalHgt, totalHgt);
+      prevTotalHgt = totalHgt;
+      var colHgt = getAvailableSiteColumnHeights($scope.MasterSiteVis, $scope.SiteVis);
+      $scope.innerTblHeight = colHgt + hgtComponents.idSiteTopRow + hgtComponents.idFooter;
+      $scope.bodyColHeight = colHgt;
+      $scope.wrapperHeight = getDocHeight() - totalHgt;
+      $scope.childSiteHeight = colHgt;
   };
   
   $scope.onExpPlugClick = function(){
@@ -300,9 +348,8 @@ app.controller('MainCtrl', function($scope, $window) {
         $scope.innerTblHeight = colHgt; // + hgtComponents.idSiteTopRow + hgtComponents.idFooter;
       }
       $scope.bodyColHeight = colHgt;
-      $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
-      $scope.childSiteHeight = colHgt; // getDocHeight() - totalHgt;
-      hitMQ(null);
+      $scope.wrapperHeight = getDocHeight() - totalHgt;
+      $scope.childSiteHeight = colHgt;
   };
   $scope.onExpSiteClick = function(){
       $scope.SiteVis = $scope.ExpandSite == "Show WebSite" ? "flex" : "none";
@@ -320,8 +367,7 @@ app.controller('MainCtrl', function($scope, $window) {
         $scope.innerTblHeight = colHgt;
       }
       $scope.bodyColHeight = colHgt;
-      $scope.wrapperHeight = getDocHeight() - totalHgt; // - hgtComponents.idFooter;
+      $scope.wrapperHeight = getDocHeight() - totalHgt;
       $scope.childSiteHeight = getDocHeight() - totalHgt;
-      hitMQ(null);
   };
 });

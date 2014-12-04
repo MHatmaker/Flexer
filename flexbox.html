@@ -5,12 +5,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
  <script data-require="angular.js@1.0.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js" data-semver="1.0.7"></script>   
- <script src="script.js"></script>
+ <script src="script.js"></script>  
+ <script src="fsm.js"></script>
   </head>
 
   <body ng-controller="MainCtrl" style="height:100vh;" id="idAppBody" >
     <div id="idMasterSite" class="container-mastersite">
-      <div id="idMasterSiteExpander" class="mastersite-expander">
+      <div id="idMasterSiteControlRow" class="navigator">
+        <div id="idMasterSiteExpander" class="mastersitecontrol-expander">
           <div id="idExpButtonSum" class="havButton" ng-click="onExpSumClick()" >
             <span>
               <figure style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;">
@@ -22,6 +24,20 @@
               </figure>
             </span>
           </div>
+        </div>
+        <div id="idNavigatorExpander" class="mastersitecontrol-expander">
+          <div id="idExpButtonSum" class="havButton" ng-click="onExpNavClick()" >
+            <span>
+              <figure style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;">
+                <img src="{{currentTab.imgSrc}}" 
+                  style="flex:1;float: left; width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.01em;" />
+                <figcaption style="flex:15;float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;">
+                {{ExpandNav}}
+                </figcaption>
+              </figure>
+            </span>
+          </div>
+        </div>
       </div>
       <div id="idMasterSiteSummary" class="mastersite-summary" style="display:{{MasterSiteVis}}">
         <div class="container-newscellhead" style=" overflow:auto; flex:2;">
@@ -38,7 +54,7 @@
       
     <div id="idChildWebSite" style="height:{{childSiteHeight}}px;max-height: {{childSiteHeight}}px;">
       <div class="wrapper" >
-        <div id="idNavigator" class="navigation" >
+        <div id="idNavigator" class="navigation" style="display:{{NavigatorVis}};" >
           <div class="havButton" style="flex:1.2;font-size:10pt;">
             {{currentTab.site}}
           </div>       
