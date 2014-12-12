@@ -105,6 +105,7 @@ body {
 .container-body > * {
   padding: 3px;
 }
+
 .bodyMap{
 }
 
@@ -131,7 +132,6 @@ body {
 
 @media all and (max-width: 800px) {
   .aside { flex: 1; }
-  .container-body {flex-direction: column;}
 }
 
 @media all and (max-width: 800px) {
@@ -172,7 +172,7 @@ body {
   flex-direction: column;
   justify-content: center;
   flex: 0.3;
-  
+  overflow-y : auto;
   border:2px solid brown;
 }
 
