@@ -11,7 +11,7 @@
 
   <body ng-controller="MainCtrl" style="height:100vh;" id="idAppBody" >
     <div id="idMasterSite" class="container-mastersite">
-      <div id="idMasterSiteControlRow" class="navigator">
+      <div id="idMasterSiteControlRow">
         <div id="idMasterSiteExpander" class="mastersitecontrol-expander">
           <div id="idExpButtonSum" class="havButton" ng-click="onExpSumClick()" >
             <span>
@@ -102,7 +102,7 @@
             
             <div >
               <div class="container-body" id="idContainerBody" >
-                <div id="idBody" class="bodyMap" style="height:{{bodyColHeight}}px;max-height: {{bodyColHeight}}px;display:flex; width: {{mapColWidth}};">
+                <div id="idBody" class="bodyMap" style="height:{{bodyColHeight}}px;max-height: {{bodyColHeight}}px; width: {{mapColWidth}};">
                   <div class="container-leftcol aside" style="display:{{SiteVis}};height:{{bodyColHeight}}px;max-height: {{bodyColHeight}}px; overflow-y:auto;">
                     <section style="border: solid DarkSeaGreen"><span >Row 1</span><span >Some stuff</span></section>
                     <img class="embedded-image" src="http://www.schaik.com/pingpong/pingpong_button.gif" style="border: solid DarkSeaGreen"/>
