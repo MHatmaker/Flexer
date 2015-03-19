@@ -4,8 +4,8 @@
   <head>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navigation.css">
- <script data-require="angular.js@1.0.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js" data-semver="1.0.7"></script>   
- <script src="script.js"></script>  
+ <script data-require="angular.js@1.0.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js" data-semver="1.0.7"></script>
+ <script src="script.js"></script>
  <script src="fsm.js"></script>
   </head>
 
@@ -16,7 +16,7 @@
           <div id="idExpButtonSum" class="havButton" ng-click="onExpSumClick()" >
             <span>
               <figure style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;">
-                <img src="{{currentTab.imgSrc}}" 
+                <img src="{{currentTab.imgSrc}}"
                   style="flex:1;float: left; width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.01em;" />
                 <figcaption style="flex:15;float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;">
                 {{ExpandSum}}
@@ -29,7 +29,7 @@
           <div id="idExpButtonSum" class="havButton" ng-click="onExpNavClick()" >
             <span>
               <figure style="margin-top: 4px; margin-bottom: 4px; margin-left: 4px;">
-                <img src="{{currentTab.imgSrc}}" 
+                <img src="{{currentTab.imgSrc}}"
                   style="flex:1;float: left; width:{{expBtnHeight}}px;  height: {{expBtnHeight}}px; padding: 0.01em 0.1em  0.01em  0.01em;" />
                 <figcaption style="flex:15;float: left;  text-align: left;padding: 0.01em 0.01em 0.01em 0.2em;">
                 {{ExpandNav}}
@@ -39,7 +39,9 @@
           </div>
         </div>
       </div>
-      <div id="idMasterSiteSummary" class="mastersite-summary" style="display:{{MasterSiteVis}}">
+      <div id="idMasterSiteSummary" class="mastersite-summary"
+        ng-class="{'mastersite-shown': ExpandSum == 'Show Summary', 'mastersite-hidden': ExpandSum == 'Hide Summary'}"
+        >
         <div class="container-newscellhead" style=" overflow:auto; flex:2;">
           Summary of Master Web Site Capabilities
         </div>
@@ -51,19 +53,19 @@
         </div>
       </div>
     </div>
-      
+
     <div id="idChildWebSite" style="height:{{childSiteHeight}}px;max-height: {{childSiteHeight}}px;">
       <div class="wrapper" >
         <div id="idNavigator" class="navigation" style="display:{{NavigatorVis}};" >
           <div class="havButton" style="flex:1.2;font-size:10pt;">
             {{currentTab.site}}
-          </div>       
+          </div>
           <div  class="havButton">
             <input id = 'mppos' type='text' name='cursPos' disabled ng-model="positionView" style='flex:0.6;font-size:9pt;text-align:right;margin-right:5px;padding: 0px 2px 0px 2px;'>
           </div>
           <div class="havButton">
            <select ng-model="currentViewOption"  ng-options="option.type for option in viewOptions"></select>
-          </div > 
+          </div >
           <div id="idExpPlugButton" class="havButton" ng-click="onExpPlugClick()" style="flex:1;padding: 0.01em 0.01em 0.01em 0.01em;">
             <span>
               <figure style="margin-top: 4px; margin-bottom: 4px; margin-right: 4px;">
@@ -85,21 +87,21 @@
             </span>
           </div>
         </div>
-        
+
         <div class="container-website" >
-        
+
           <div class="container-primary" >
             <div id="idSiteTopRow" class="container-newscell" style="display:{{SiteVis}}; flex: 0.2;" >
               <div class="container-newscellhead">
                 {{Header}}
-              </div>        
+              </div>
               <div class="container-newscellbody" >
                 This should span the complete page
                 <br>
                 Except for the plugin, when it is visible, even if it requires another row
               </div>
             </div>
-            
+
             <div >
               <div class="container-body" id="idContainerBody" >
                 <div id="idBody" class="bodyMap" style="height:{{bodyColHeight}}px;max-height: {{bodyColHeight}}px; width: {{mapColWidth}};">
@@ -109,7 +111,7 @@
                     <section style="border: solid DarkSeaGreen"><span >Row 2</span><span >Some stuff</span></section>
                     <section style="border: solid DarkSeaGreen"><span >Row 3</span><span >Some stuff</span></section>
                   </div>
-                  
+
                   <div class="container-mapcol" style="height:{{bodyColHeight}}px;max-height: {{bodyColHeight}}px;">
                     <div class="container-mapcolheading">
                       Center Column Stuff
@@ -118,14 +120,14 @@
                       <img class="embedded-image" src="http://www.schaik.com/png/pngcsum_icon.gif"/>
                     </div>
                   </div>
-                  
+
                   <div class="container-rightcol aside" style="overflow-y:auto;display:{{SiteVis}};height:{{bodyColHeight}}px;max-height: {{bodyColHeight}}px;">
                     <div class="container-newscell">
                       <div class="container-newscellhead" style="overflow-y:auto; flex:1;">
                         Some Right Column Stuff
                       </div>
                       <div class="container-newscellbody" style="border:2px solid blue;flex: 5; overflow-y:auto;">
-                        molestie at, fringilla in, sodales eu, elit.Curabitur mattis lorem et est. Quisque et tortor. Integer bibendumvulputate odio. Nam nec ipsum. Vestibulum mollis eros feugiataugue. Integer fermentum odio lobortis odio. Nullam mollis nisl nonmetus. Maecenas nec nunc eget pede ultrices blandit. Ut non purusut elit convallis eleifend. Fusce tincidunt, justo quis tempuseuismod, magna nulla viverra libero, sit amet lacinia odio diam idrisus. 
+                        molestie at, fringilla in, sodales eu, elit.Curabitur mattis lorem et est. Quisque et tortor. Integer bibendumvulputate odio. Nam nec ipsum. Vestibulum mollis eros feugiataugue. Integer fermentum odio lobortis odio. Nullam mollis nisl nonmetus. Maecenas nec nunc eget pede ultrices blandit. Ut non purusut elit convallis eleifend. Fusce tincidunt, justo quis tempuseuismod, magna nulla viverra libero, sit amet lacinia odio diam idrisus.
                       </div>
                    </div>
                   </div>
@@ -138,7 +140,7 @@
               </div>
             </div>
           </div>
-          
+
           <div id="Verbage" class="container-plugin" style="display:{{VerbVis}};height:{{innerTblHeight}}px;max-height: {{innerTblHeight}}px;" >
             <div class="container-newscellhead" style="border:2px solid green;margin:2px; overflow:auto;">
               Mashover Plugin
